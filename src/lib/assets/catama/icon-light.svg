@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="100%" height="100%">
+  <defs>
+    <linearGradient id="border_light_catama" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#F59E0B" stop-opacity="0.5"/>
+      <stop offset="100%" stop-color="#E2E8F0" stop-opacity="0.8"/>
+    </linearGradient>
+  </defs>
+  <rect x="16" y="16" width="368" height="368" rx="68" fill="#FFFFFF" stroke="url(#border_light_catama)" stroke-width="6"/>
+  
+  <!-- Dual Wing Cecep Azhar Crest Geometry (Top Watermark / Wings) -->
+  <g opacity="0.45" transform="translate(140, 50) scale(0.09)">
+    <path fill-rule="evenodd" clip-rule="evenodd" d="M581 0L0 301V644L581 945V546L421 473L581 399V0ZM529 86L52 332V613L529 859V574L308 473L529 371V86Z" fill="#F59E0B"/>
+    <path fill-rule="evenodd" clip-rule="evenodd" d="M753 0L1334 301V644L753 945V546L913 473L753 399V0ZM805 86L1282 332V613L805 859V574L1026 473L805 371V86Z" fill="#F59E0B"/>
+  </g>
+
+  <g>
+    
+          <rect x="130" y="190" width="140" height="130" rx="16" fill="none" stroke="#F59E0B" stroke-width="24"/>
+          <rect x="160" y="230" width="20" height="20" rx="4" fill="#EDEDED"/>
+          <rect x="220" y="230" width="20" height="20" rx="4" fill="#EDEDED"/>
+          <path d="M170 280 Q200 300 230 280" fill="none" stroke="#F59E0B" stroke-width="16" stroke-linecap="round"/>
+          <line x1="140" y1="170" x2="160" y2="190" stroke="#F59E0B" stroke-width="18" stroke-linecap="round"/>
+          <line x1="260" y1="170" x2="240" y2="190" stroke="#F59E0B" stroke-width="18" stroke-linecap="round"/>
+        
+  </g>
+</svg>

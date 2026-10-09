@@ -2,4 +2,5 @@
 export * from './components/ui';
 export * from './components/templates';
 export * from './i18n.svelte';
+export * from './theme';
 import './tokens/tokens.css';

@@ -1,26 +1,136 @@
+/* CAUI Master Theme Tokens — 17 CA Applications Ecosystem */
+
 :root {
-  /* Surface & Base */
+  /* Canvas & Surfaces (Pure Pitch Black / Sovereign Tech-Brutalist HUD) */
+  --ca-canvas: #09090b;
   --ca-surface: #0a0a0c;
+  --ca-surface-base: #0a0a0c;
   --ca-surface-elevated: #121217;
   --ca-surface-subtle: #18181f;
   --ca-border: #272732;
+  --ca-border-hover: #3f3f46;
 
   /* Typography & Foreground */
   --ca-text-primary: #ededed;
   --ca-text-secondary: #a1a1aa;
   --ca-text-muted: #71717a;
 
-  /* Dynamic Brand / Pro Accent */
-  --ca-brand: #06b6d4;
+  /* Dynamic Brand / Pro Accent (Default Rose / Crimson) */
+  --ca-brand: #ef4444;
+  --ca-brand-glow: rgba(239, 68, 68, 0.15);
 
   /* System Semantics */
   --ca-danger: #f43f5e;
   --ca-success: #10b981;
   --ca-warning: #f59e0b;
+  --ca-info: #06b6d4;
 
   /* Corner Radius */
   --ca-radius-sm: 6px;
   --ca-radius-md: 8px;
   --ca-radius-lg: 12px;
   --ca-radius-xl: 16px;
+}
+
+/* 17 CA App Specific Themes */
+/* 1. CATerm — Sovereign Terminal & SRE Workspace */
+[data-theme="caterm"] {
+  --ca-brand: #ef4444;
+  --ca-brand-glow: rgba(239, 68, 68, 0.15);
+}
+
+/* 2. CAMark — Markdown Studio & Knowledge Vault */
+[data-theme="camark"] {
+  --ca-brand: #06b6d4;
+  --ca-brand-glow: rgba(6, 182, 212, 0.15);
+}
+
+/* 3. CAStudio — Content, Media & Pitch Deck Engine */
+[data-theme="castudio"] {
+  --ca-brand: #8b5cf6;
+  --ca-brand-glow: rgba(139, 92, 246, 0.15);
+}
+
+/* 4. CACash — Personal & Family Zero-Knowledge Finance */
+[data-theme="cacash"] {
+  --ca-brand: #10b981;
+  --ca-brand-glow: rgba(16, 185, 129, 0.15);
+}
+
+/* 5. CATama — Autonomous Virtual Pet & Sovereign Arena */
+[data-theme="catama"] {
+  --ca-brand: #f59e0b;
+  --ca-brand-glow: rgba(245, 158, 11, 0.15);
+}
+
+/* 6. FathStore — Multi-Tenant POS & Cloud Webstore */
+[data-theme="fathstore"] {
+  --ca-brand: #3b82f6;
+  --ca-brand-glow: rgba(59, 130, 246, 0.15);
+}
+
+/* 7. CABench — Hardware & Security Benchmark Lab */
+[data-theme="cabench"] {
+  --ca-brand: #ec4899;
+  --ca-brand-glow: rgba(236, 72, 153, 0.15);
+}
+
+/* 8. CATable — Zero-Knowledge Database Manager (SQL) */
+[data-theme="catable"] {
+  --ca-brand: #6366f1;
+  --ca-brand-glow: rgba(99, 102, 241, 0.15);
+}
+
+/* 9. CAPost — API Testing Suite & Mock Server Relay */
+[data-theme="capost"] {
+  --ca-brand: #f97316;
+  --ca-brand-glow: rgba(249, 115, 22, 0.15);
+}
+
+/* 10. CABook — Interactive E-Learning & Digital Books */
+[data-theme="cabook"] {
+  --ca-brand: #14b8a6;
+  --ca-brand-glow: rgba(20, 184, 166, 0.15);
+}
+
+/* 11. CAProduct — Founder Dashboard & Metric Analytics */
+[data-theme="caproduct"] {
+  --ca-brand: #84cc16;
+  --ca-brand-glow: rgba(132, 204, 22, 0.15);
+}
+
+/* 12. CAVision — AI Medical Image & Diagnostic Suite */
+[data-theme="cavision"] {
+  --ca-brand: #0ea5e9;
+  --ca-brand-glow: rgba(14, 165, 233, 0.15);
+}
+
+/* 13. CAEntech — Energy & IoT Telemetry Monitor */
+[data-theme="caentech"] {
+  --ca-brand: #d97706;
+  --ca-brand-glow: rgba(217, 119, 6, 0.15);
+}
+
+/* 14. CAIgent — Autonomous Agent Orchestration Canvas */
+[data-theme="caigent"] {
+  --ca-brand: #a855f7;
+  --ca-brand-glow: rgba(168, 85, 247, 0.15);
+}
+
+/* 15. GCC Hub — Global Command Center (Billing & Auth) */
+[data-theme="gcchub"] {
+  --ca-brand: #ffffff;
+  --ca-brand-glow: rgba(255, 255, 255, 0.2);
+}
+
+/* 16. CAFramework — Base Core Template Engine */
+[data-theme="caframework"] {
+  --ca-brand: #64748b;
+  --ca-brand-glow: rgba(100, 116, 139, 0.15);
+}
+
+/* 17. CAUI — Design System, Iconography & Component Library */
+[data-theme="caui"] {
+  --ca-brand: #e2e8f0;
+  --ca-brand-glow: rgba(226, 232, 240, 0.15);
 }

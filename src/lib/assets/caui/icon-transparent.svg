@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="100%" height="100%">
+  
+  <!-- Dual Wing Cecep Azhar Crest Geometry (Top Watermark / Wings) -->
+  <g opacity="0.45" transform="translate(140, 50) scale(0.09)">
+    <path fill-rule="evenodd" clip-rule="evenodd" d="M581 0L0 301V644L581 945V546L421 473L581 399V0ZM529 86L52 332V613L529 859V574L308 473L529 371V86Z" fill="#E2E8F0"/>
+    <path fill-rule="evenodd" clip-rule="evenodd" d="M753 0L1334 301V644L753 945V546L913 473L753 399V0ZM805 86L1282 332V613L805 859V574L1026 473L805 371V86Z" fill="#E2E8F0"/>
+  </g>
+
+  <g>
+    
+          <!-- Dual Wings Emblem Mini -->
+          <path fill-rule="evenodd" clip-rule="evenodd" d="M175 190 L120 220 V255 L175 285 V245 L160 238 L175 230 V190 Z" fill="#E2E8F0" />
+          <path fill-rule="evenodd" clip-rule="evenodd" d="M225 190 L280 220 V255 L225 285 V245 L240 238 L225 230 V190 Z" fill="#E2E8F0" />
+          <rect x="185" y="230" width="30" height="30" rx="6" fill="none" stroke="#E2E8F0" stroke-width="12"/>
+        
+  </g>
+</svg>

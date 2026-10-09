@@ -1,7 +1,7 @@
 {
   "name": "@cecepazhar/caui",
   "version": "1.0.0",
-  "description": "CAUI — CA Design System by Cecep Saeful Azhar Hidayat, ST. Unified Svelte 5 component suite and tokens for 17 CA apps.",
+  "description": "CAUI — CA Design System by Cecep Saeful Azhar Hidayat, ST. Unified Svelte 5 component suite, iconography & tokens for 17 CA apps.",
   "author": "Cecep Saeful Azhar Hidayat, ST <hi@cecepazhar.com> (https://www.cecepazhar.com)",
   "homepage": "https://www.cecepazhar.com",
   "repository": {
@@ -17,7 +17,8 @@
       "svelte": "./dist/index.js",
       "default": "./dist/index.js"
     },
-    "./tokens.css": "./dist/tokens/tokens.css"
+    "./tokens.css": "./dist/tokens/tokens.css",
+    "./caui.css": "./dist/tokens/caui.css"
   },
   "files": [
     "dist",

@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="100%" height="100%">
+  <defs>
+    <radialGradient id="glow_cacash" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#10B981" stop-opacity="0.18" />
+      <stop offset="100%" stop-color="#121217" stop-opacity="0" />
+    </radialGradient>
+    <linearGradient id="border_grad_cacash" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#10B981" stop-opacity="0.6"/>
+      <stop offset="100%" stop-color="#272732" stop-opacity="0.8"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Squircle Container 16px radius relative to 400px is 64px -->
+  <rect x="16" y="16" width="368" height="368" rx="68" fill="#121217" stroke="url(#border_grad_cacash)" stroke-width="6"/>
+  <rect x="20" y="20" width="360" height="360" rx="64" fill="url(#glow_cacash)"/>
+
+  
+  <!-- Dual Wing Cecep Azhar Crest Geometry (Top Watermark / Wings) -->
+  <g opacity="0.45" transform="translate(140, 50) scale(0.09)">
+    <path fill-rule="evenodd" clip-rule="evenodd" d="M581 0L0 301V644L581 945V546L421 473L581 399V0ZM529 86L52 332V613L529 859V574L308 473L529 371V86Z" fill="#10B981"/>
+    <path fill-rule="evenodd" clip-rule="evenodd" d="M753 0L1334 301V644L753 945V546L913 473L753 399V0ZM805 86L1282 332V613L805 859V574L1026 473L805 371V86Z" fill="#10B981"/>
+  </g>
+
+
+  <!-- App Specific Glyph -->
+  <g>
+    
+          <path d="M260 200 C240 180 160 180 140 220 C120 260 120 280 140 300 C160 330 240 330 260 310" fill="none" stroke="#10B981" stroke-width="24" stroke-linecap="round"/>
+          <line x1="110" y1="256" x2="270" y2="256" stroke="#EDEDED" stroke-width="20" stroke-linecap="round"/>
+        
+  </g>
+</svg>
