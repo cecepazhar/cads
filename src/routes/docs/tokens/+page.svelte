@@ -18,7 +18,7 @@
     <Badge variant="brand" size="xs">SPECIFICATION</Badge>
     <h1 class="text-3xl font-extrabold text-white mt-2 tracking-tight">Design Tokens Explorer</h1>
     <p class="text-sm text-neutral-400 mt-2 leading-relaxed">
-      Sistem token terpadu CADS v1.0 yang menjamin konsistensi visual di seluruh produk ekosistem CA.
+      Sistem token terpadu CAUI v1.0 yang menjamin konsistensi visual di seluruh produk ekosistem CA.
     </p>
   </div>
 

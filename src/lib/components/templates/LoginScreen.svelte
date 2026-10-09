@@ -98,9 +98,9 @@
   <!-- Form Login -->
   <form onsubmit={handleSubmit} class="space-y-4">
     <div>
-      <label for="cads-login-email" class="block text-xs font-semibold uppercase tracking-wider text-neutral-400 mb-1.5">Work Email</label>
+      <label for="caui-login-email" class="block text-xs font-semibold uppercase tracking-wider text-neutral-400 mb-1.5">Work Email</label>
       <Input
-        id="cads-login-email"
+        id="caui-login-email"
         type="email"
         bind:value={email}
         placeholder="name@company.com"
@@ -110,14 +110,14 @@
 
     <div>
       <div class="flex items-center justify-between mb-1.5">
-        <label for="cads-login-pass" class="block text-xs font-semibold uppercase tracking-wider text-neutral-400">Password / Token</label>
+        <label for="caui-login-pass" class="block text-xs font-semibold uppercase tracking-wider text-neutral-400">Password / Token</label>
         <button type="button" class="text-[11px] text-[var(--ca-brand)] hover:underline cursor-pointer">
           Forgot?
         </button>
       </div>
       <div class="relative">
         <Input
-          id="cads-login-pass"
+          id="caui-login-pass"
           type={showPassword ? 'text' : 'password'}
           bind:value={password}
           placeholder="••••••••••••"

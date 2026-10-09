@@ -29,7 +29,7 @@
 
   function handleClickOutside(event: MouseEvent) {
     const target = event.target as HTMLElement;
-    if (!target.closest('.cads-context-menu')) {
+    if (!target.closest('.caui-context-menu')) {
       open = false;
     }
   }
@@ -48,7 +48,7 @@
 
 {#if open}
   <div
-    class="cads-context-menu fixed z-50 min-w-[180px] rounded-lg bg-neutral-900 border border-neutral-800 p-1 shadow-2xl backdrop-blur-md {customClass}"
+    class="caui-context-menu fixed z-50 min-w-[180px] rounded-lg bg-neutral-900 border border-neutral-800 p-1 shadow-2xl backdrop-blur-md {customClass}"
     style="left: {x}px; top: {y}px;"
     role="menu"
     tabindex="-1"

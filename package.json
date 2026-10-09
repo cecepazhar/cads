@@ -1,12 +1,12 @@
 {
-  "name": "@cecepazhar/cads",
+  "name": "@cecepazhar/caui",
   "version": "1.0.0",
-  "description": "CADS — CAFramework Design System by Cecep Saeful Azhar Hidayat, ST. Unified Svelte 5 component suite and tokens for 17 CA apps.",
+  "description": "CAUI — CA Design System by Cecep Saeful Azhar Hidayat, ST. Unified Svelte 5 component suite and tokens for 17 CA apps.",
   "author": "Cecep Saeful Azhar Hidayat, ST <hi@cecepazhar.com> (https://www.cecepazhar.com)",
   "homepage": "https://www.cecepazhar.com",
   "repository": {
     "type": "git",
-    "url": "https://github.com/cecepazhar/cads.git"
+    "url": "https://github.com/cecepazhar/caui.git"
   },
   "type": "module",
   "svelte": "./dist/index.js",

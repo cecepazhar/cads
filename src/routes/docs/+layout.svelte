@@ -66,30 +66,32 @@
   ];
 </script>
 
-<div class="min-h-screen flex flex-col bg-[#0A0A0C] text-[#EDEDED] font-sans antialiased selection:bg-[var(--ca-brand)] selection:text-white">
+<div class="min-h-screen flex flex-col bg-white dark:bg-[#0A0A0C] text-neutral-900 dark:text-[#EDEDED] font-sans antialiased selection:bg-[var(--ca-brand)] selection:text-white transition-colors duration-200">
   <!-- Topbar -->
-  <header class="sticky top-0 z-40 border-b border-[#272732] bg-[#0A0A0C]/90 backdrop-blur-md px-6 py-3.5 flex items-center justify-between">
+  <header class="sticky top-0 z-40 border-b border-neutral-200 dark:border-[#272732] bg-white/90 dark:bg-[#0A0A0C]/90 backdrop-blur-md px-6 py-4 flex items-center justify-between max-w-7xl w-full mx-auto">
     <div class="flex items-center gap-6">
       <a href="/" class="flex items-center gap-3 group">
-        <Logo size={28} mode="brand" />
-        <span class="font-bold text-sm tracking-tight text-white group-hover:text-[var(--ca-brand)] transition">CADS</span>
-        <span class="text-[10px] font-mono px-2 py-0.5 rounded-full border border-neutral-700 bg-neutral-900 text-neutral-400">v1.0.0</span>
+        <Logo size={32} mode="brand" />
+        <div class="flex flex-col text-left">
+          <span class="font-bold text-sm tracking-tight text-neutral-900 dark:text-white group-hover:text-[var(--ca-brand)] dark:group-hover:text-[var(--ca-brand)] transition">CAUI</span>
+          <span class="text-[10px] font-mono text-neutral-500">Ark UI Style Design System</span>
+        </div>
       </a>
-      <nav class="hidden md:flex items-center gap-5 text-xs text-neutral-400 font-medium">
-        <a href="/" class="hover:text-white transition">Home</a>
-        <a href="/docs" class="text-white font-semibold">Docs</a>
-        <a href="/docs/components" class="hover:text-white transition">Components</a>
-        <a href="/docs/tokens" class="hover:text-white transition">Tokens</a>
+      <nav class="hidden md:flex items-center gap-6 text-xs font-medium text-neutral-500 dark:text-neutral-400">
+        <a href="/docs" class="text-neutral-900 dark:text-white font-semibold">Documentation</a>
+        <a href="/docs/components" class="hover:text-neutral-900 dark:hover:text-white transition">Components</a>
+        <a href="/docs/tokens" class="hover:text-neutral-900 dark:hover:text-white transition">Tokens</a>
+        <a href="/docs/installation" class="hover:text-neutral-900 dark:hover:text-white transition">Installation</a>
       </nav>
     </div>
     <div class="flex items-center gap-3">
       <LanguageSwitcher />
       <ThemeSwitcher />
       <a
-        href="https://github.com/cecepazhar/cads"
+        href="https://github.com/cecepazhar/caui"
         target="_blank"
         rel="noreferrer"
-        class="text-xs px-3 py-1.5 rounded-lg border border-neutral-700 bg-neutral-900 hover:bg-neutral-800 text-neutral-300 font-mono transition"
+        class="text-xs px-3.5 py-1.5 rounded-lg border border-neutral-300 dark:border-neutral-700 bg-neutral-100 dark:bg-neutral-900 hover:bg-neutral-200 dark:hover:bg-neutral-800 text-neutral-700 dark:text-neutral-300 font-mono transition"
       >
         GitHub
       </a>

@@ -28,7 +28,7 @@
     {
       id: '1',
       role: 'assistant',
-      content: 'Hello! I am your CADS DevOps assistant. I can help analyze failed systemd units, explain Docker log traces, or construct optimized bash pipelines.',
+      content: 'Hello! I am your CAUI DevOps assistant. I can help analyze failed systemd units, explain Docker log traces, or construct optimized bash pipelines.',
       timestamp: '10:42 AM',
       suggestedActions: [
         'Check systemd error logs',
@@ -85,7 +85,7 @@ sudo nginx -t && sudo systemctl reload nginx`,
         {
           id: (Date.now() + 1).toString(),
           role: 'assistant',
-          content: `I've analyzed your prompt regarding "${userText}". Here is the recommended CADS execution step:`,
+          content: `I've analyzed your prompt regarding "${userText}". Here is the recommended CAUI execution step:`,
           timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
           codeSnippet: `# Generated shell diagnostic\nsudo journalctl -u nginx.service -n 50 --no-pager`,
           suggestedActions: ['Copy output', 'Run in current SSH pane'],

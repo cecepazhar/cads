@@ -4,7 +4,7 @@
   let copied = $state(false);
 
   function copyInstall() {
-    navigator.clipboard.writeText('pnpm add @cecepazhar/cads');
+    navigator.clipboard.writeText('pnpm add @cecepazhar/caui');
     copied = true;
     setTimeout(() => (copied = false), 2000);
   }
@@ -12,17 +12,17 @@
 
 <div class="space-y-8">
   <div>
-    <Badge variant="brand" size="xs">CADS ARCHITECTURE v1.0</Badge>
+    <Badge variant="brand" size="xs">CAUI ARCHITECTURE v1.0</Badge>
     <h1 class="text-3xl font-extrabold text-white mt-2 tracking-tight">Overview & Quickstart</h1>
     <p class="text-sm text-neutral-400 mt-2 leading-relaxed">
-      CADS (CAFramework Design System) adalah pustaka komponen UI monoline wireframe & tech-brutalist bergaya Ark UI dan Shadcn, dibangun secara native di atas <strong>Svelte 5 Runes</strong> untuk 17 aplikasi ekosistem CA.
+      CAUI (CA Design System) adalah pustaka komponen UI monoline wireframe & tech-brutalist bergaya Ark UI dan Shadcn, dibangun secara native di atas <strong>Svelte 5 Runes</strong> untuk 17 aplikasi ekosistem CA.
     </p>
   </div>
 
   <!-- Install Card -->
   <Card title="Quick Installation" description="Install paket via pnpm, npm, atau yarn ke dalam proyek SvelteKit Anda.">
     <div class="flex items-center justify-between rounded-lg bg-neutral-950 border border-neutral-800 p-3 font-mono text-xs text-neutral-300 mt-2">
-      <span>pnpm add @cecepazhar/cads</span>
+      <span>pnpm add @cecepazhar/caui</span>
       <button
         type="button"
         onclick={copyInstall}

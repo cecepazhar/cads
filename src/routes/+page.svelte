@@ -45,7 +45,7 @@
   ];
 
   function copyInstall() {
-    navigator.clipboard.writeText('pnpm add @cecepazhar/cads');
+    navigator.clipboard.writeText('pnpm add @cecepazhar/caui');
     copied = true;
     setTimeout(() => (copied = false), 2000);
   }
@@ -62,33 +62,34 @@
   });
 </script>
 
-<div class="min-h-screen flex flex-col bg-[#0A0A0C] text-[#EDEDED] font-sans antialiased selection:bg-[var(--ca-brand)] selection:text-white">
-  <!-- Navigation Topbar -->
-  <header class="sticky top-0 z-50 border-b border-[#272732] bg-[#0A0A0C]/90 backdrop-blur-md px-6 py-4 flex items-center justify-between max-w-7xl w-full mx-auto">
+<div class="min-h-screen flex flex-col bg-white dark:bg-[#0A0A0C] text-neutral-900 dark:text-[#EDEDED] font-sans antialiased selection:bg-[var(--ca-brand)] selection:text-white transition-colors duration-200">
+  <!-- Topbar -->
+  <header class="sticky top-0 z-40 border-b border-neutral-200 dark:border-[#272732] bg-white/90 dark:bg-[#0A0A0C]/90 backdrop-blur-md px-6 py-4 flex items-center justify-between max-w-7xl w-full mx-auto">
     <div class="flex items-center gap-6">
       <a href="/" class="flex items-center gap-3 group">
         <Logo size={32} mode="brand" />
         <div class="flex flex-col text-left">
-          <span class="font-bold text-sm tracking-tight text-white group-hover:text-[var(--ca-brand)] transition">CADS</span>
+          <span class="font-bold text-sm tracking-tight text-neutral-900 dark:text-white group-hover:text-[var(--ca-brand)] dark:group-hover:text-[var(--ca-brand)] transition">CAUI</span>
           <span class="text-[10px] font-mono text-neutral-500">Ark UI Style Design System</span>
         </div>
       </a>
-      <nav class="hidden md:flex items-center gap-6 text-xs font-medium text-neutral-400">
-        <a href="/docs" class="hover:text-white transition">Documentation</a>
-        <a href="/docs/components" class="hover:text-white transition">Components</a>
-        <a href="/docs/tokens" class="hover:text-white transition">Tokens</a>
-        <a href="/docs/installation" class="hover:text-white transition">Installation</a>
+      <nav class="hidden md:flex items-center gap-6 text-xs font-medium text-neutral-500 dark:text-neutral-400">
+        <a href="/docs" class="hover:text-neutral-900 dark:hover:text-white transition">Documentation</a>
+        <a href="/docs/components" class="hover:text-neutral-900 dark:hover:text-white transition">Components</a>
+        <a href="/docs/tokens" class="hover:text-neutral-900 dark:hover:text-white transition">Tokens</a>
+        <a href="/docs/installation" class="hover:text-neutral-900 dark:hover:text-white transition">Installation</a>
       </nav>
     </div>
-
     <div class="flex items-center gap-3">
       <LanguageSwitcher />
       <ThemeSwitcher />
       <a
-        href="/docs"
-        class="text-xs px-3.5 py-1.5 rounded-lg bg-[var(--ca-brand)] text-neutral-950 font-semibold hover:opacity-90 transition"
+        href="https://github.com/cecepazhar/caui"
+        target="_blank"
+        rel="noreferrer"
+        class="text-xs px-3.5 py-1.5 rounded-lg border border-neutral-300 dark:border-neutral-700 bg-neutral-100 dark:bg-neutral-900 hover:bg-neutral-200 dark:hover:bg-neutral-800 text-neutral-700 dark:text-neutral-300 font-mono transition"
       >
-        Open Docs
+        GitHub
       </a>
     </div>
   </header>
@@ -98,7 +99,7 @@
     <div class="text-center max-w-3xl mx-auto space-y-6">
       <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-neutral-800 bg-[#121217] text-xs font-mono text-neutral-300">
         <span class="w-2 h-2 rounded-full bg-[var(--ca-brand)] animate-pulse"></span>
-        <span>CADS v1.0 — Powered by Svelte 5 Runes</span>
+        <span>CAUI v1.0 — Powered by Svelte 5 Runes</span>
       </div>
 
       <h1 class="text-4xl sm:text-5xl md:text-6xl font-extrabold text-white tracking-tight leading-[1.1]">
@@ -115,7 +116,7 @@
       <div class="flex flex-col sm:flex-row items-center justify-center gap-3 pt-4">
         <div class="flex items-center gap-3 rounded-xl border border-neutral-800 bg-neutral-950 px-4 py-2.5 font-mono text-xs text-neutral-300 shadow-2xl">
           <span class="text-neutral-500">$</span>
-          <span>pnpm add @cecepazhar/cads</span>
+          <span>pnpm add @cecepazhar/caui</span>
           <button
             type="button"
             onclick={copyInstall}
@@ -220,7 +221,7 @@
     <div class="space-y-8">
       <div class="text-center max-w-xl mx-auto space-y-2">
         <h2 class="text-2xl font-bold text-white tracking-tight">Ecosystem Applications</h2>
-        <p class="text-xs text-neutral-400">CADS menjadi pondasi desain tunggal yang menyatukan 17 aplikasi produk Fathforce.</p>
+        <p class="text-xs text-neutral-400">CAUI menjadi pondasi desain tunggal yang menyatukan 17 aplikasi produk Fathforce.</p>
       </div>
 
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
@@ -238,7 +239,7 @@
 
     <!-- Bottom CTA -->
     <div class="rounded-2xl border border-neutral-800 bg-gradient-to-b from-[#14141A] to-[#0A0A0C] p-8 md:p-12 text-center space-y-4">
-      <h2 class="text-2xl sm:text-3xl font-extrabold text-white">Mulai Bangun dengan CADS Hari Ini</h2>
+      <h2 class="text-2xl sm:text-3xl font-extrabold text-white">Mulai Bangun dengan CAUI Hari Ini</h2>
       <p class="text-xs sm:text-sm text-neutral-400 max-w-lg mx-auto">
         Koleksi lengkap 36+ komponen, token Tailwind v4, dan panduan integrasi siap pakai.
       </p>
@@ -256,11 +257,11 @@
   <!-- Footer -->
   <footer class="border-t border-[#272732] py-8 px-6 text-center text-xs text-neutral-500 font-sans">
     <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
-      <div>&copy; 2026 CAFramework Design System (CADS). All rights reserved.</div>
+      <div>&copy; 2026 CA Design System (CAUI). All rights reserved.</div>
       <div class="flex items-center gap-4 text-neutral-400">
         <a href="https://cecepazhar.com" target="_blank" class="hover:text-white transition">cecepazhar.com</a>
         <a href="https://fathforce.com" target="_blank" class="hover:text-white transition">Fathforce</a>
-        <a href="https://github.com/cecepazhar/cads" target="_blank" class="hover:text-white transition">GitHub</a>
+        <a href="https://github.com/cecepazhar/caui" target="_blank" class="hover:text-white transition">GitHub</a>
       </div>
     </div>
   </footer>

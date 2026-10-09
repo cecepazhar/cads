@@ -1,6 +1,6 @@
 ---
 version: alpha
-name: CADS - CA Design System
+name: CAUI - CA Design System
 description: Cyberpunk monoline wireframe and tech-brutalist HUD design system for sovereign terminal developer tooling.
 colors:
   primary: "#EDEDED"
@@ -109,7 +109,7 @@ components:
 
 ## Overview
 
-CADS (CATerm Design System) v1.0 establishes the visual identity, tokens, and component contract for CATerm and CA Group developer utilities.
+CAUI (CA Design System) v1.0 establishes the visual identity, tokens, and component contract for CATerm and CA Group developer utilities.
 
 ### Brand & Ethos
 - **Sovereign Developer First:** Zero telemetry leaks, zero-knowledge storage, local-first architecture.

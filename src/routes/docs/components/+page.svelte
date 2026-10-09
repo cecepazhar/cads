@@ -76,7 +76,7 @@
     <Badge variant="brand" size="xs">LIVING COMPONENT SHOWCASE</Badge>
     <h1 class="text-3xl font-extrabold text-white mt-2 tracking-tight">Interactive Component Catalog</h1>
     <p class="text-sm text-neutral-400 mt-2 leading-relaxed">
-      Katalog lengkap 36+ komponen CADS v1.0. Setiap komponen dapat diuji interaksi langsung, state hover, active, bindable runes, dan responsivitasnya.
+      Katalog lengkap 36+ komponen CAUI v1.0. Setiap komponen dapat diuji interaksi langsung, state hover, active, bindable runes, dan responsivitasnya.
     </p>
   </div>
 

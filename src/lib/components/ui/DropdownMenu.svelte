@@ -31,7 +31,7 @@
 
   function handleClickOutside(event: MouseEvent) {
     const target = event.target as HTMLElement;
-    if (!target.closest('.cads-dropdown-container')) {
+    if (!target.closest('.caui-dropdown-container')) {
       open = false;
     }
   }
@@ -44,7 +44,7 @@
   });
 </script>
 
-<div class="cads-dropdown-container relative inline-block text-left {customClass}">
+<div class="caui-dropdown-container relative inline-block text-left {customClass}">
   <div onclick={() => (open = !open)} role="button" tabindex="0" onkeydown={(e) => e.key === 'Enter' && (open = !open)}>
     {#if trigger}
       {@render trigger()}

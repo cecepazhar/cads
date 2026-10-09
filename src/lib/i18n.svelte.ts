@@ -1,4 +1,4 @@
-// Svelte 5 Reactive i18n Engine for CADS
+// Svelte 5 Reactive i18n Engine for CAUI
 import en from './i18n/en.json';
 import id from './i18n/id.json';
 

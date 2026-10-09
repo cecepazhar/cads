@@ -1,4 +1,4 @@
-// Core CADS Primitives (Svelte 5 Runes)
+// Core CAUI Primitives (Svelte 5 Runes)
 export { default as Button } from './Button.svelte';
 export { default as Badge } from './Badge.svelte';
 export { default as Card } from './Card.svelte';
