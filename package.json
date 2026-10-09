@@ -1,7 +1,13 @@
 {
-  "name": "@caf/cads",
+  "name": "@cecepazhar/cads",
   "version": "1.0.0",
-  "description": "CAFramework Design System (CADS) — Unified Svelte 5 component suite and tokens for 17 CA apps.",
+  "description": "CADS — CAFramework Design System by Cecep Saeful Azhar Hidayat, ST. Unified Svelte 5 component suite and tokens for 17 CA apps.",
+  "author": "Cecep Saeful Azhar Hidayat, ST <hi@cecepazhar.com> (https://www.cecepazhar.com)",
+  "homepage": "https://www.cecepazhar.com",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/cecepazhar/cads.git"
+  },
   "type": "module",
   "main": "./src/lib/index.ts",
   "module": "./src/lib/index.ts",

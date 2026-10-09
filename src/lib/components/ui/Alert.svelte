@@ -1,7 +1,7 @@
 <script lang="ts">
   import type { Snippet } from 'svelte';
 
-  export type AlertVariant = 'info' | 'success' | 'warning' | 'error';
+  export type AlertVariant = 'info' | 'success' | 'warning' | 'error' | 'danger';
 
   interface Props {
     variant?: AlertVariant;
@@ -59,7 +59,14 @@
       border: 'border-rose-500/30',
       text: 'text-rose-800 dark:text-rose-300',
       iconColor: 'text-rose-500',
-      path: 'M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z',
+      path: 'M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z',
+    },
+    danger: {
+      bg: 'bg-rose-500/10 dark:bg-rose-500/10',
+      border: 'border-rose-500/30',
+      text: 'text-rose-800 dark:text-rose-300',
+      iconColor: 'text-rose-500',
+      path: 'M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z',
     },
   };
 

@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { getLocale, setLocale, type Locale } from '$lib/i18n';
+  import { getLocale, setLocale } from '$lib/i18n.svelte';
 
   let current = $derived(getLocale());
 
