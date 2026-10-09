@@ -114,10 +114,10 @@
   <div>
     <h2 class="text-sm font-mono uppercase text-neutral-400 font-bold tracking-wider mb-3">Live Telemetry & Metrics Primitives</h2>
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-      <TelemetryCard title="CPU Load" value="18.4%" change="+2.1%" changeType="increase" icon="cpu" />
-      <TelemetryCard title="Memory Usage" value="6.2 / 16 GB" change="38.7%" changeType="neutral" icon="hard-drive" />
-      <TelemetryCard title="Relay Latency" value="8.4 ms" change="-1.2 ms" changeType="decrease" icon="activity" />
-      <TelemetryCard title="Active SSH Sessions" value="12 Nodes" change="Stable" changeType="neutral" icon="terminal" />
+      <TelemetryCard title="CPU Load" value="18.4%" trend="+2.1%" status="normal" percentage={18.4} />
+      <TelemetryCard title="Memory Usage" value="6.2 / 16 GB" trend="38.7%" status="normal" percentage={38.7} />
+      <TelemetryCard title="Relay Latency" value="8.4 ms" trend="-1.2 ms" status="normal" percentage={8.4} />
+      <TelemetryCard title="Active SSH Sessions" value="12 Nodes" trend="Stable" status="normal" percentage={75} />
     </div>
   </div>
 
@@ -206,22 +206,20 @@
   <!-- 7. Data Grid & Telemetry Table -->
   <Card title="Data Grid & Telemetry Table" description="Sortable table with row hover, badges, and tabular numerics.">
     <Table columns={tableColumns} data={tableData}>
-      {#snippet row(item: any)}
-        <tr class="border-b border-[#272732] hover:bg-white/[0.02] transition-colors text-xs font-mono">
-          <td class="px-4 py-3 text-white font-medium">{item.host}</td>
-          <td class="px-4 py-3">
-            {#if item.status === 'online'}
-              <Badge variant="success">ONLINE</Badge>
-            {:else if item.status === 'idle'}
-              <Badge variant="neutral">IDLE</Badge>
-            {:else}
-              <Badge variant="danger">OFFLINE</Badge>
-            {/if}
-          </td>
-          <td class="px-4 py-3 text-neutral-300 tabular-nums">{item.cpu}</td>
-          <td class="px-4 py-3 text-neutral-300 tabular-nums">{item.memory}</td>
-          <td class="px-4 py-3 text-neutral-400 tabular-nums">{item.uptime}</td>
-        </tr>
+      {#snippet cell({ item, column, value })}
+        {#if column.key === 'status'}
+          {#if value === 'online'}
+            <Badge variant="success">ONLINE</Badge>
+          {:else if value === 'idle'}
+            <Badge variant="neutral">IDLE</Badge>
+          {:else}
+            <Badge variant="danger">OFFLINE</Badge>
+          {/if}
+        {:else if column.key === 'cpu' || column.key === 'memory' || column.key === 'uptime'}
+          <span class="tabular-nums font-mono text-neutral-300">{value}</span>
+        {:else}
+          <span class="font-medium text-white">{value}</span>
+        {/if}
       {/snippet}
     </Table>
   </Card>

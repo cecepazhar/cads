@@ -1,6 +1,6 @@
 ---
 version: alpha
-name: CADS - CATerm Design System
+name: CADS - CA Design System
 description: Cyberpunk monoline wireframe and tech-brutalist HUD design system for sovereign terminal developer tooling.
 colors:
   primary: "#EDEDED"
