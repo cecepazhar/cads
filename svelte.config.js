@@ -1,18 +1,14 @@
-// SvelteKit Static Adapter Configuration for CADS Living Showcase
-import adapter from "@sveltejs/adapter-static";
+import adapter from "@sveltejs/adapter-auto";
 import { vitePreprocess } from "@sveltejs/vite-plugin-svelte";
 
 /** @type {import('@sveltejs/kit').Config} */
 const config = {
   preprocess: vitePreprocess(),
   kit: {
-    adapter: adapter({
-      fallback: "404.html",
-      pages: "build",
-      assets: "build",
-      precompress: false,
-      strict: false,
-    }),
+    adapter: adapter(),
+    prerender: {
+      handleMissingId: 'warn',
+    },
   },
 };
 
