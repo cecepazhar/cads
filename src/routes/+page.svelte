@@ -1,6 +1,6 @@
 <script lang="ts">
   import { onMount } from 'svelte';
-  import { Button, Badge, Input, Card } from '$lib/components/ui';
+  import { Button, Badge, Input, Card, Logo } from '$lib';
   import PageHeader from '$lib/components/PageHeader.svelte';
 
   // Live Brand Accent Switcher for Pro Theme Testing
@@ -29,17 +29,53 @@
   });
 </script>
 
-<div class="flex-1 min-h-screen bg-[#0A0A0C] text-[#EDEDED] overflow-y-auto p-6 md:p-8 space-y-8 font-sans select-none">
-  <!-- Top Navigation Header -->
-  <PageHeader
-    title="CADS v1.0 Design System Showcase"
-    subtitle="Interactive living component library and design token contract for CATerm and CA Group applications."
-  />
+<div class="flex-1 w-full p-4 sm:p-6 md:p-8 space-y-8 font-sans select-none">
+  <!-- Top Hero / Banner Header -->
+  <div class="p-6 md:p-8 rounded-2xl bg-gradient-to-b from-[#18181F] to-[#121217] border border-[#272732] shadow-xl relative overflow-hidden">
+    <div class="absolute -top-12 -right-12 opacity-5 pointer-events-none">
+      <Logo size={280} mode="white" />
+    </div>
+    <div class="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-6">
+      <div class="space-y-2 max-w-2xl">
+        <div class="flex items-center gap-2">
+          <Badge variant="brand" size="xs">OFFICIAL DESIGN SYSTEM</Badge>
+          <Badge variant="neutral" size="xs">SVELTE 5 RUNES</Badge>
+          <Badge variant="neutral" size="xs">TAILWIND v4</Badge>
+        </div>
+        <h1 class="text-2xl md:text-3xl font-extrabold text-white tracking-tight flex items-center gap-3">
+          <Logo size={32} mode="brand" />
+          <span>CADS — Cecep Azhar Design System</span>
+        </h1>
+        <p class="text-sm text-neutral-400 leading-relaxed">
+          The sovereign developer design system and token contract powering <strong>CATerm</strong>, <strong>CAMark</strong>, <strong>CACash</strong>, and the <strong>Fathforce Ecosystem</strong>. Engineered by <strong>Cecep Saeful Azhar Hidayat, ST</strong> with zero-knowledge aesthetics, anti-bloat HUD components, and full dark-mode optimization.
+        </p>
+      </div>
+
+      <div class="flex flex-wrap items-center gap-3">
+        <a href="https://www.cecepazhar.com" target="_blank" rel="noopener noreferrer">
+          <Button variant="outline" size="sm">
+            <svg class="w-3.5 h-3.5 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+            </svg>
+            Author Website
+          </Button>
+        </a>
+        <a href="https://github.com/cecep-azhar/cads" target="_blank" rel="noopener noreferrer">
+          <Button variant="brand" size="sm">
+            <svg class="w-3.5 h-3.5 mr-1" fill="currentColor" viewBox="0 0 24 24">
+              <path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" />
+            </svg>
+            GitHub Star
+          </Button>
+        </a>
+      </div>
+    </div>
+  </div>
 
   <!-- Pro Brand Accent Live Switcher -->
   <Card
-    title="Pro Custom Theming (CSS Variable --ca-brand)"
-    description="Test how the monochrome base transitions seamlessly when an active Pro accent color is applied."
+    title="Reactive Brand Color Engine (--ca-brand)"
+    description="Test how the monochrome obsidian HUD palette adapts across different ecosystem brand accents."
   >
     <div class="flex flex-wrap items-center gap-2 pt-1">
       {#each brandAccents as b}
@@ -50,10 +86,54 @@
           <span class="w-3 h-3 rounded-full border border-black/30" style="background-color: {b.hex};"></span>
           <span>{b.name}</span>
           {#if selectedAccent === b.hex}
-            <span class="text-[10px] text-white">✓</span>
+            <span class="text-[10px] text-white font-bold">✓</span>
           {/if}
         </button>
       {/each}
+    </div>
+  </Card>
+
+  <!-- 0. Brand & Official Logo Element -->
+  <Card
+    title="Official Cecep Azhar Dual-Wing Vector Component"
+    description="Dedicated SVG component with reactive sizing, color modes, and vector precision."
+  >
+    <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 pt-2">
+      <div class="p-4 rounded-xl bg-[#0E0E12] border border-[#272732] flex flex-col items-center justify-center gap-3 text-center">
+        <Logo size={44} mode="brand" />
+        <div>
+          <span class="text-xs font-bold text-white block">Brand Mode</span>
+          <span class="text-[10px] text-neutral-400 font-mono">mode="brand"</span>
+        </div>
+      </div>
+
+      <div class="p-4 rounded-xl bg-[#0E0E12] border border-[#272732] flex flex-col items-center justify-center gap-3 text-center">
+        <Logo size={44} mode="white" />
+        <div>
+          <span class="text-xs font-bold text-white block">White Monoline</span>
+          <span class="text-[10px] text-neutral-400 font-mono">mode="white"</span>
+        </div>
+      </div>
+
+      <div class="p-4 rounded-xl bg-neutral-100 border border-neutral-300 flex flex-col items-center justify-center gap-3 text-center text-neutral-900">
+        <Logo size={44} mode="light" />
+        <div>
+          <span class="text-xs font-bold text-neutral-900 block">Light Contrast</span>
+          <span class="text-[10px] text-neutral-600 font-mono">mode="light"</span>
+        </div>
+      </div>
+
+      <div class="p-4 rounded-xl bg-[#0E0E12] border border-[#272732] flex flex-col items-center justify-center gap-3 text-center">
+        <div class="flex items-center gap-2">
+          <Logo size={20} mode="brand" />
+          <Logo size={28} mode="brand" />
+          <Logo size={36} mode="brand" />
+        </div>
+        <div>
+          <span class="text-xs font-bold text-white block">Scalable Sizes</span>
+          <span class="text-[10px] text-neutral-400 font-mono">size=20, 28, 36</span>
+        </div>
+      </div>
     </div>
   </Card>
 

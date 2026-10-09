@@ -1,12 +1,14 @@
 {
   "name": "@cecep-azhar/cads",
   "version": "1.0.0",
-  "description": "CATerm Design System - Standalone Svelte 5 component library and token contract",
+  "description": "CADS (Cecep Azhar Design System) - Standalone Svelte 5 component library and token contract for CATerm and Fathforce Ecosystem applications",
   "type": "module",
   "license": "MIT",
+  "author": "Cecep Saeful Azhar Hidayat, ST <hi@cecepazhar.com> (https://www.cecepazhar.com)",
+  "homepage": "https://www.cecepazhar.com",
   "repository": {
     "type": "git",
-    "url": "https://github.com/cecepazhar/cads.git"
+    "url": "https://github.com/cecep-azhar/cads"
   },
   "scripts": {
     "dev": "vite dev",

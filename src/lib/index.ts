@@ -4,7 +4,8 @@ export { default as Badge, type BadgeVariant, type BadgeSize } from './component
 export { default as Input } from './components/ui/Input.svelte';
 export { default as Card } from './components/ui/Card.svelte';
 
-// Layout / Section Components
+// Branding & Layout Components
+export { default as Logo } from './components/Logo.svelte';
 export { default as PageHeader, type PageHeaderAccent } from './components/PageHeader.svelte';
 
 // Theme & Tokens
