@@ -1,274 +1,267 @@
 <script lang="ts">
   import { onMount } from 'svelte';
-  import { 
-    Button, 
-    Badge, 
-    Input, 
-    Card, 
-    Table, 
-    Modal, 
-    Alert, 
-    Sidebar, 
-    SidebarItem, 
-    Icon, 
-    LanguageSwitcher, 
-    ThemeSwitcher,
-    FramelessHeader,
-    SplitPane,
-    CommandPalette,
-    TelemetryCard
-  } from '$lib/components/ui';
-  import { 
-    SplashScreen, 
-    LoginScreen, 
-    DashboardView, 
-    AiChatPanel 
-  } from '$lib/components/templates';
-  import PageHeader from '$lib/components/PageHeader.svelte';
   import Logo from '$lib/components/Logo.svelte';
+  import {
+    Button,
+    Badge,
+    Card,
+    Input,
+    Switch,
+    PinInput,
+    Slider,
+    Avatar,
+    AvatarGroup,
+    SegmentedControl,
+    Tooltip,
+    Kbd,
+    ThemeSwitcher,
+    LanguageSwitcher,
+  } from '$lib/components/ui';
 
-  // Brand Accents
-  const brandAccents = [
+  // Interactive Live Playground State
+  let activeTab = $state('button');
+  let brandColor = $state('#06b6d4');
+  let switchState = $state(true);
+  let sliderVal = $state(68);
+  let pinVal = $state('202610');
+  let copied = $state(false);
+
+  const brandPresets = [
     { name: 'Monochrome (Zinc)', hex: '#71717a' },
-    { name: 'Rose / Crimson (CATerm)', hex: '#ef4444' },
-    { name: 'Cyan (CAMark)', hex: '#06b6d4' },
-    { name: 'Emerald (CACash)', hex: '#10b981' },
-    { name: 'Violet (CAStudio)', hex: '#8b5cf6' },
-    { name: 'Amber (CAEntech)', hex: '#eab308' },
-    { name: 'Blue (Core)', hex: '#3b82f6' },
+    { name: 'CATerm Cyan', hex: '#06b6d4' },
+    { name: 'CAStudio Violet', hex: '#8b5cf6' },
+    { name: 'CACash Emerald', hex: '#10b981' },
+    { name: 'CABench Crimson', hex: '#ef4444' },
+    { name: 'CAEntech Amber', hex: '#eab308' },
   ];
 
-  let selectedAccent = $state(brandAccents[1].hex);
-  let buttonLoading = $state(false);
-  let testInputValue = $state('');
-  let modalOpen = $state(false);
-
-  // Sample Data for Table
-  const tableColumns = [
-    { key: 'host', label: 'Host & Address', sortable: true },
-    { key: 'status', label: 'Status' },
-    { key: 'cpu', label: 'CPU Load', sortable: true },
-    { key: 'memory', label: 'RAM Usage', sortable: true },
-    { key: 'uptime', label: 'Uptime' },
+  const apps = [
+    { name: 'CATerm', desc: 'Zero-Knowledge SSH/SFTP Terminal & Cluster Fleet Manager', tag: 'Cyan #06B6D4' },
+    { name: 'CAMark', desc: 'Zen Distraction-Free Offline Encrypted Markdown IDE', tag: 'Cyan #06B6D4' },
+    { name: 'CAStudio', desc: 'Multi-Channel AI Repurposing & Automation Suite', tag: 'Violet #8B5CF6' },
+    { name: 'CACash', desc: 'Sovereign Offline Multi-Tenant Islamic Financial Ledger', tag: 'Emerald #10B981' },
+    { name: 'CABench', desc: 'Real-time Autonomous Multi-Agent AI Benchmark Arena', tag: 'Crimson #EF4444' },
+    { name: 'CATama', desc: 'Zero-Bloat Cybernetic Habit & Virtual Companion Engine', tag: 'Amber #EAB308' },
   ];
 
-  const tableData = [
-    { host: 'Hostinger VPS (100.76.150.46)', status: 'online', cpu: '12%', memory: '3.4 / 8.0 GB', uptime: '42d 18h' },
-    { host: 'X1 ThinkPad (100.78.73.124)', status: 'online', cpu: '24%', memory: '7.8 / 16.0 GB', uptime: '6d 04h' },
-    { host: 'pc-gerlink (100.64.12.89)', status: 'idle', cpu: '4%', memory: '2.1 / 16.0 GB', uptime: '18d 22h' },
-    { host: 'AWS Backup Node (ap-southeast-1)', status: 'offline', cpu: '0%', memory: '0.0 / 4.0 GB', uptime: 'Offline' },
-  ];
+  function copyInstall() {
+    navigator.clipboard.writeText('pnpm add @cecepazhar/cads');
+    copied = true;
+    setTimeout(() => (copied = false), 2000);
+  }
 
-  function setBrandAccent(hex: string) {
-    selectedAccent = hex;
+  function setBrand(hex: string) {
+    brandColor = hex;
     if (typeof document !== 'undefined') {
       document.documentElement.style.setProperty('--ca-brand', hex);
     }
   }
 
   onMount(() => {
-    setBrandAccent(selectedAccent);
+    setBrand(brandColor);
   });
 </script>
 
-<div class="flex-1 flex flex-col h-full bg-[#0A0A0C] text-[#EDEDED] overflow-y-auto p-6 space-y-8 font-sans select-none max-w-7xl mx-auto">
-  
-  <!-- 1. Header & Personal Branding -->
-  <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-[#272732] pb-6">
-    <div class="flex items-center gap-4">
-      <Logo size={48} mode="brand" />
-      <div>
-        <h1 class="text-2xl font-bold tracking-tight text-white flex items-center gap-2">
-          CADS v1.0 — CAFramework Design System
-          <span class="text-xs px-2 py-0.5 rounded-full border border-white/20 bg-white/5 text-neutral-300 font-mono font-normal">Svelte 5 Runes</span>
-        </h1>
-        <p class="text-xs text-neutral-400 mt-1">
-          Architected & Engineered by <span class="text-white font-medium">Cecep Saeful Azhar Hidayat, ST</span> · Fathforce Ecosystem
-        </p>
-      </div>
+<div class="min-h-screen flex flex-col bg-[#0A0A0C] text-[#EDEDED] font-sans antialiased selection:bg-[var(--ca-brand)] selection:text-white">
+  <!-- Navigation Topbar -->
+  <header class="sticky top-0 z-50 border-b border-[#272732] bg-[#0A0A0C]/90 backdrop-blur-md px-6 py-4 flex items-center justify-between max-w-7xl w-full mx-auto">
+    <div class="flex items-center gap-6">
+      <a href="/" class="flex items-center gap-3 group">
+        <Logo size={32} mode="brand" />
+        <div class="flex flex-col text-left">
+          <span class="font-bold text-sm tracking-tight text-white group-hover:text-[var(--ca-brand)] transition">CADS</span>
+          <span class="text-[10px] font-mono text-neutral-500">Ark UI Style Design System</span>
+        </div>
+      </a>
+      <nav class="hidden md:flex items-center gap-6 text-xs font-medium text-neutral-400">
+        <a href="/docs" class="hover:text-white transition">Documentation</a>
+        <a href="/docs/components" class="hover:text-white transition">Components</a>
+        <a href="/docs/tokens" class="hover:text-white transition">Tokens</a>
+        <a href="/docs/installation" class="hover:text-white transition">Installation</a>
+      </nav>
     </div>
-    
+
     <div class="flex items-center gap-3">
       <LanguageSwitcher />
       <ThemeSwitcher />
+      <a
+        href="/docs"
+        class="text-xs px-3.5 py-1.5 rounded-lg bg-[var(--ca-brand)] text-neutral-950 font-semibold hover:opacity-90 transition"
+      >
+        Open Docs
+      </a>
     </div>
-  </div>
+  </header>
 
-  <!-- 2. Brand Accent Matrix -->
-  <Card title="Brand Accent Theming (CSS Variable --ca-brand)" description="Live override palette for Pro custom branding across 17 applications.">
-    <div class="flex flex-wrap items-center gap-2 pt-1">
-      {#each brandAccents as b}
-        <button
-          onclick={() => setBrandAccent(b.hex)}
-          class="flex items-center gap-2 px-2.5 py-1.5 rounded-lg border text-xs font-medium transition-all cursor-pointer {selectedAccent === b.hex ? 'border-white bg-white/10 text-white' : 'border-[#272732] bg-[#18181F]/40 text-neutral-400 hover:text-white'}"
-        >
-          <span class="w-3 h-3 rounded-full border border-black/30" style="background-color: {b.hex};"></span>
-          <span>{b.name}</span>
-          {#if selectedAccent === b.hex}<span class="text-[10px] text-white">✓</span>{/if}
-        </button>
-      {/each}
-    </div>
-  </Card>
-
-  <!-- 3. Telemetry & Metrik Cards -->
-  <div>
-    <h2 class="text-sm font-mono uppercase text-neutral-400 font-bold tracking-wider mb-3">Live Telemetry & Metrics Primitives</h2>
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-      <TelemetryCard title="CPU Load" value="18.4%" trend="+2.1%" status="normal" percentage={18.4} />
-      <TelemetryCard title="Memory Usage" value="6.2 / 16 GB" trend="38.7%" status="normal" percentage={38.7} />
-      <TelemetryCard title="Relay Latency" value="8.4 ms" trend="-1.2 ms" status="normal" percentage={8.4} />
-      <TelemetryCard title="Active SSH Sessions" value="12 Nodes" trend="Stable" status="normal" percentage={75} />
-    </div>
-  </div>
-
-  <!-- 4. Atomic Buttons & Size Scales -->
-  <Card title="Button Scale & Variants" description="Monochrome solid base with outline secondary, ghost, danger, and dynamic brand variant.">
-    <div class="space-y-6">
-      <div>
-        <span class="text-[10px] font-mono uppercase text-neutral-500 block mb-2 font-bold tracking-wider">Style Variants:</span>
-        <div class="flex flex-wrap items-center gap-3">
-          <Button variant="primary">Primary (Solid White)</Button>
-          <Button variant="secondary">Secondary (Dark)</Button>
-          <Button variant="outline">Outline (Wireframe)</Button>
-          <Button variant="ghost">Ghost</Button>
-          <Button variant="danger">Danger</Button>
-          <Button variant="brand">Brand Accent</Button>
-        </div>
+  <!-- Hero Section (Ark UI Style) -->
+  <main class="flex-1 max-w-7xl w-full mx-auto px-6 py-16 md:py-24 space-y-20">
+    <div class="text-center max-w-3xl mx-auto space-y-6">
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-neutral-800 bg-[#121217] text-xs font-mono text-neutral-300">
+        <span class="w-2 h-2 rounded-full bg-[var(--ca-brand)] animate-pulse"></span>
+        <span>CADS v1.0 — Powered by Svelte 5 Runes</span>
       </div>
 
-      <div>
-        <span class="text-[10px] font-mono uppercase text-neutral-500 block mb-2 font-bold tracking-wider">Size Scale (Strict Heights: 28px, 36px, 42px):</span>
-        <div class="flex flex-wrap items-center gap-3">
-          <Button variant="outline" size="sm">Small (28px)</Button>
-          <Button variant="outline" size="md">Medium (36px)</Button>
-          <Button variant="outline" size="lg">Large (42px)</Button>
-          <Button
-            variant="brand"
-            loading={buttonLoading}
-            onclick={() => {
-              buttonLoading = true;
-              setTimeout(() => (buttonLoading = false), 2000);
-            }}
+      <h1 class="text-4xl sm:text-5xl md:text-6xl font-extrabold text-white tracking-tight leading-[1.1]">
+        Unstyled & Cyberpunk Wireframe UI Components for
+        <span class="bg-gradient-to-r from-neutral-200 via-white to-neutral-400 bg-clip-text text-transparent"> Sovereign Apps.</span>
+      </h1>
+
+      <p class="text-sm md:text-base text-neutral-400 leading-relaxed max-w-2xl mx-auto">
+        Koleksi komponen UI modern berkecepatan tinggi, tanpa Virtual DOM, ramah Tauri desktop dan web sovereign.
+        Arsitektur berbasis monoline wireframe monokrom dengan aksen dinamis <code class="text-white font-mono">--ca-brand</code>.
+      </p>
+
+      <!-- Install Command & CTAs -->
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-3 pt-4">
+        <div class="flex items-center gap-3 rounded-xl border border-neutral-800 bg-neutral-950 px-4 py-2.5 font-mono text-xs text-neutral-300 shadow-2xl">
+          <span class="text-neutral-500">$</span>
+          <span>pnpm add @cecepazhar/cads</span>
+          <button
+            type="button"
+            onclick={copyInstall}
+            class="ml-2 px-2 py-0.5 rounded bg-neutral-800 hover:bg-neutral-700 text-[10px] text-white font-sans transition cursor-pointer"
           >
-            {buttonLoading ? 'Executing...' : 'Click for Loading State'}
-          </Button>
+            {copied ? 'Copied!' : 'Copy'}
+          </button>
+        </div>
+
+        <a
+          href="/docs/components"
+          class="px-5 py-2.5 rounded-xl bg-white text-neutral-950 font-semibold text-xs hover:bg-neutral-200 transition shadow-lg"
+        >
+          Explore Catalog &rarr;
+        </a>
+      </div>
+
+      <!-- Author Attribution -->
+      <div class="text-[11px] text-neutral-500 pt-2">
+        Architected & Engineered by <a href="https://cecepazhar.com" target="_blank" class="text-neutral-300 underline underline-offset-4 hover:text-white">Cecep Saeful Azhar Hidayat, ST</a> · Fathforce Ecosystem
+      </div>
+    </div>
+
+    <!-- Live Interactive Sandbox (Ark UI Style) -->
+    <div class="rounded-2xl border border-[#272732] bg-[#121217] p-6 md:p-8 shadow-2xl space-y-6">
+      <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-neutral-800 pb-4">
+        <div>
+          <h3 class="text-base font-bold text-white flex items-center gap-2">
+            Interactive Component Sandbox
+            <Badge variant="brand" size="xs">Live Runes</Badge>
+          </h3>
+          <p class="text-xs text-neutral-400 mt-1">Uji reaktivitas Svelte 5 tanpa page reload. Ubah tema dan coba komponen di bawah.</p>
+        </div>
+
+        <!-- Brand Accent Picker -->
+        <div class="flex items-center gap-2">
+          <span class="text-xs text-neutral-400 font-mono">Theme:</span>
+          {#each brandPresets as b}
+            <button
+              type="button"
+              onclick={() => setBrand(b.hex)}
+              class="w-5 h-5 rounded-full border border-white/20 transition-transform hover:scale-110 cursor-pointer {brandColor === b.hex ? 'ring-2 ring-white ring-offset-2 ring-offset-neutral-900' : ''}"
+              style="background-color: {b.hex};"
+              title={b.name}
+            ></button>
+          {/each}
+        </div>
+      </div>
+
+      <!-- Component Sandbox Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <!-- Interactive Buttons & Avatars -->
+        <div class="rounded-xl border border-neutral-800 bg-neutral-950 p-5 space-y-4">
+          <h4 class="text-xs font-semibold text-neutral-300">Buttons & Avatars</h4>
+          <div class="flex flex-wrap gap-2">
+            <Button variant="primary" size="sm">Solid White</Button>
+            <Button variant="brand" size="sm">Brand Action</Button>
+            <Button variant="outline" size="sm">Outline</Button>
+          </div>
+          <div class="flex items-center gap-3 pt-2">
+            <Avatar fallback="CA" halo="pro" size="md" />
+            <Avatar fallback="FH" halo="brand" size="md" />
+            <AvatarGroup>
+              <Avatar fallback="01" size="sm" />
+              <Avatar fallback="02" size="sm" />
+              <Avatar fallback="03" size="sm" />
+            </AvatarGroup>
+          </div>
+        </div>
+
+        <!-- Interactive Controls -->
+        <div class="rounded-xl border border-neutral-800 bg-neutral-950 p-5 space-y-4">
+          <h4 class="text-xs font-semibold text-neutral-300">Switches & Sliders</h4>
+          <Switch bind:checked={switchState} label="Zero-Knowledge Shield" description="Argon2id + XChaCha20" />
+          <div class="space-y-1 pt-2">
+            <div class="flex justify-between text-[11px] font-mono text-neutral-400">
+              <span>Slider Power</span>
+              <span>{sliderVal}%</span>
+            </div>
+            <Slider min={0} max={100} bind:value={sliderVal} />
+          </div>
+        </div>
+
+        <!-- Interactive PinInput -->
+        <div class="rounded-xl border border-neutral-800 bg-neutral-950 p-5 space-y-4">
+          <h4 class="text-xs font-semibold text-neutral-300">2FA PinInput & Navigation</h4>
+          <PinInput bind:value={pinVal} length={6} />
+          <div class="pt-2">
+            <SegmentedControl
+              options={[
+                { value: 'tab1', label: 'Terminal' },
+                { value: 'tab2', label: 'Cluster' },
+                { value: 'tab3', label: 'Vault' },
+              ]}
+            />
+          </div>
         </div>
       </div>
     </div>
-  </Card>
 
-  <!-- 5. Badges, Chips & Form Inputs -->
-  <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-    <Card title="Badges & Status Indicators" description="HUD status tags for hosts and telemetry.">
-      <div class="space-y-3">
-        <div class="flex flex-wrap items-center gap-2">
-          <Badge variant="neutral">NEUTRAL 200</Badge>
-          <Badge variant="success">● ONLINE</Badge>
-          <Badge variant="warning">▲ HIGH LOAD</Badge>
-          <Badge variant="danger">✕ CRITICAL</Badge>
-          <Badge variant="brand">★ PRO ACTIVE</Badge>
-        </div>
-        <div class="flex items-center gap-2 pt-2">
-          <Badge variant="brand" size="xs">ED25519-ZK</Badge>
-          <Badge variant="neutral" size="sm">ARM64 ARCH</Badge>
-          <Badge variant="success" size="sm">TAILSCALE MESH</Badge>
-        </div>
+    <!-- 17 Sovereign Applications Grid -->
+    <div class="space-y-8">
+      <div class="text-center max-w-xl mx-auto space-y-2">
+        <h2 class="text-2xl font-bold text-white tracking-tight">Ecosystem Applications</h2>
+        <p class="text-xs text-neutral-400">CADS menjadi pondasi desain tunggal yang menyatukan 17 aplikasi produk Fathforce.</p>
       </div>
-    </Card>
 
-    <Card title="Form Inputs & Search Controls" description="Monochrome input controls with focus ring & icon slots.">
-      <div class="space-y-3">
-        <Input bind:value={testInputValue} placeholder="e.g. 100.76.150.46 or user@host" />
-        <Input placeholder="Search logs, sessions, commands...">
-          {#snippet leadingIcon()}
-            <Icon name="search" size={14} class="text-neutral-400" />
-          {/snippet}
-        </Input>
-      </div>
-    </Card>
-  </div>
-
-  <!-- 6. Notifications & Alerts -->
-  <Card title="Alerts & Notification Banners" description="Inline notifications for system events and warnings.">
-    <div class="space-y-3">
-      <Alert variant="info" title="Zero-Knowledge Enclave Active">
-        All session keys and SQLite telemetry are encrypted locally via Argon2id + AES-256-GCM.
-      </Alert>
-      <Alert variant="warning" title="SSH Host Connection High Latency">
-        Remote host response time exceeded 280ms over current relay route.
-      </Alert>
-      <Alert variant="danger" title="Unauthorized Sudo Attempt Detected">
-        Audit rule violation triggered in container <code>docker-prod-db</code>.
-      </Alert>
-    </div>
-  </Card>
-
-  <!-- 7. Data Grid & Telemetry Table -->
-  <Card title="Data Grid & Telemetry Table" description="Sortable table with row hover, badges, and tabular numerics.">
-    <Table columns={tableColumns} data={tableData}>
-      {#snippet cell({ item, column, value })}
-        {#if column.key === 'status'}
-          {#if value === 'online'}
-            <Badge variant="success">ONLINE</Badge>
-          {:else if value === 'idle'}
-            <Badge variant="neutral">IDLE</Badge>
-          {:else}
-            <Badge variant="danger">OFFLINE</Badge>
-          {/if}
-        {:else if column.key === 'cpu' || column.key === 'memory' || column.key === 'uptime'}
-          <span class="tabular-nums font-mono text-neutral-300">{value}</span>
-        {:else}
-          <span class="font-medium text-white">{value}</span>
-        {/if}
-      {/snippet}
-    </Table>
-  </Card>
-
-  <!-- 8. Interactive Modal Trigger -->
-  <Card title="Dialog / Modal / Overlays" description="Backdrop blur modal with frameless header.">
-    <div class="flex items-center justify-between">
-      <span class="text-xs text-neutral-400">Click to preview interactive dialog overlay:</span>
-      <Button variant="secondary" onclick={() => (modalOpen = true)}>
-        Open Modal Preview
-      </Button>
-    </div>
-  </Card>
-
-  <!-- 9. Full Screen Templates Showcase -->
-  <div>
-    <h2 class="text-sm font-mono uppercase text-neutral-400 font-bold tracking-wider mb-3">Full App Templates & AI Panels</h2>
-    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
-      <Card title="AI Copilot & Chat Panel" description="Floating AI assistant panel with model switcher.">
-        <div class="h-96 rounded-xl border border-[#272732] overflow-hidden bg-[#0A0A0C]">
-          <AiChatPanel />
-        </div>
-      </Card>
-      
-      <Card title="Zero-Knowledge Login / Lock Screen" description="Vault master password screen.">
-        <div class="h-96 rounded-xl border border-[#272732] overflow-hidden bg-[#0A0A0C] flex items-center justify-center p-4">
-          <LoginScreen />
-        </div>
-      </Card>
-    </div>
-  </div>
-
-  <!-- Modal Preview -->
-  <Modal bind:open={modalOpen} title="Node Diagnostics — Hostinger VPS">
-    <div class="space-y-4 text-xs font-sans">
-      <p class="text-neutral-300">Detailed system diagnostics for remote server running on Tailscale node.</p>
-      <div class="bg-[#0A0A0C] p-3 rounded-lg border border-[#272732] font-mono text-[11px] space-y-1 text-neutral-400">
-        <div>OS: Linux 6.19.10-300.fc44.x86_64</div>
-        <div>Uptime: 42 days, 18 hours, 32 mins</div>
-        <div>Active Containers: 14 Running (Podman Rootless)</div>
-        <div>Memory Free: 4,612 MB / 8,192 MB</div>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+        {#each apps as app}
+          <div class="rounded-xl border border-neutral-800 bg-[#121217] p-5 space-y-2 hover:border-neutral-700 transition">
+            <div class="flex items-center justify-between">
+              <h3 class="text-sm font-bold text-white">{app.name}</h3>
+              <span class="text-[10px] font-mono px-2 py-0.5 rounded border border-neutral-700 text-neutral-300">{app.tag}</span>
+            </div>
+            <p class="text-xs text-neutral-400 leading-relaxed">{app.desc}</p>
+          </div>
+        {/each}
       </div>
     </div>
-    {#snippet footer()}
-      <div class="flex justify-end gap-2">
-        <Button variant="outline" size="sm" onclick={() => (modalOpen = false)}>Close</Button>
-        <Button variant="brand" size="sm" onclick={() => (modalOpen = false)}>Export Report</Button>
-      </div>
-    {/snippet}
-  </Modal>
 
+    <!-- Bottom CTA -->
+    <div class="rounded-2xl border border-neutral-800 bg-gradient-to-b from-[#14141A] to-[#0A0A0C] p-8 md:p-12 text-center space-y-4">
+      <h2 class="text-2xl sm:text-3xl font-extrabold text-white">Mulai Bangun dengan CADS Hari Ini</h2>
+      <p class="text-xs sm:text-sm text-neutral-400 max-w-lg mx-auto">
+        Koleksi lengkap 36+ komponen, token Tailwind v4, dan panduan integrasi siap pakai.
+      </p>
+      <div class="pt-2">
+        <a
+          href="/docs"
+          class="inline-flex px-6 py-3 rounded-xl bg-[var(--ca-brand)] text-neutral-950 font-bold text-xs hover:opacity-90 transition shadow-xl"
+        >
+          Lihat Dokumentasi Lengkap &rarr;
+        </a>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="border-t border-[#272732] py-8 px-6 text-center text-xs text-neutral-500 font-sans">
+    <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
+      <div>&copy; 2026 CAFramework Design System (CADS). All rights reserved.</div>
+      <div class="flex items-center gap-4 text-neutral-400">
+        <a href="https://cecepazhar.com" target="_blank" class="hover:text-white transition">cecepazhar.com</a>
+        <a href="https://fathforce.com" target="_blank" class="hover:text-white transition">Fathforce</a>
+        <a href="https://github.com/cecepazhar/cads" target="_blank" class="hover:text-white transition">GitHub</a>
+      </div>
+    </div>
+  </footer>
 </div>

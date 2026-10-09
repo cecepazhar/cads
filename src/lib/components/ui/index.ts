@@ -1,3 +1,4 @@
+// Core CADS Primitives (Svelte 5 Runes)
 export { default as Button } from './Button.svelte';
 export { default as Badge } from './Badge.svelte';
 export { default as Card } from './Card.svelte';
@@ -14,3 +15,36 @@ export { default as FramelessHeader } from './FramelessHeader.svelte';
 export { default as SplitPane } from './SplitPane.svelte';
 export { default as CommandPalette } from './CommandPalette.svelte';
 export { default as TelemetryCard } from './TelemetryCard.svelte';
+
+// 20 Primitives (Ark UI / Shadcn Style Upgrade)
+export { default as Avatar } from './Avatar.svelte';
+export { default as AvatarGroup } from './AvatarGroup.svelte';
+export { default as Tooltip } from './Tooltip.svelte';
+export { default as DropdownMenu } from './DropdownMenu.svelte';
+export { default as ContextMenu } from './ContextMenu.svelte';
+export { default as Tabs } from './Tabs.svelte';
+export { default as SegmentedControl } from './SegmentedControl.svelte';
+export { default as Switch } from './Switch.svelte';
+export { default as Checkbox } from './Checkbox.svelte';
+export { default as RadioGroup } from './RadioGroup.svelte';
+export { default as Slider } from './Slider.svelte';
+export { default as RangeSlider } from './RangeSlider.svelte';
+export { default as Drawer } from './Drawer.svelte';
+export { default as Accordion } from './Accordion.svelte';
+export { default as Collapsible } from './Collapsible.svelte';
+export { default as Popover } from './Popover.svelte';
+export { default as HoverCard } from './HoverCard.svelte';
+export { default as Kbd } from './Kbd.svelte';
+export { default as Breadcrumb } from './Breadcrumb.svelte';
+export { default as ProgressBar } from './ProgressBar.svelte';
+export { default as CircularProgress } from './CircularProgress.svelte';
+export { default as Skeleton } from './Skeleton.svelte';
+export { default as Toast } from './Toast.svelte';
+export { toast } from './toast.svelte';
+export { default as PinInput } from './PinInput.svelte';
+export { default as Textarea } from './Textarea.svelte';
+export { default as Select } from './Select.svelte';
+export { default as Combobox } from './Combobox.svelte';
+export { default as TreeView } from './TreeView.svelte';
+export { default as Separator } from './Separator.svelte';
+export { default as ColorPicker } from './ColorPicker.svelte';
