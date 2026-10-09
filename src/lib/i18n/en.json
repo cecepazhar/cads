@@ -1,0 +1,32 @@
+{
+  "common": {
+    "save": "Save",
+    "cancel": "Cancel",
+    "delete": "Delete",
+    "edit": "Edit",
+    "confirm": "Confirm",
+    "search": "Search...",
+    "loading": "Loading...",
+    "status": "Status",
+    "actions": "Actions",
+    "online": "Online",
+    "offline": "Offline"
+  },
+  "auth": {
+    "login_title": "CAFramework Single Sign-On",
+    "login_subtitle": "Sovereign identity for all 17 CA applications",
+    "email_label": "Work Email / Username",
+    "password_label": "Master Password",
+    "remember_me": "Remember this device",
+    "sign_in": "Sign In",
+    "create_account": "Create Account"
+  },
+  "navigation": {
+    "dashboard": "Dashboard",
+    "hosts": "Hosts & Servers",
+    "files": "Files (SFTP)",
+    "monitoring": "Monitoring",
+    "settings": "Settings",
+    "audit": "Security Audit"
+  }
+}

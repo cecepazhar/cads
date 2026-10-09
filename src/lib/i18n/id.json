@@ -1,0 +1,32 @@
+{
+  "common": {
+    "save": "Simpan",
+    "cancel": "Batal",
+    "delete": "Hapus",
+    "edit": "Ubah",
+    "confirm": "Konfirmasi",
+    "search": "Cari...",
+    "loading": "Memuat...",
+    "status": "Status",
+    "actions": "Aksi",
+    "online": "Aktif",
+    "offline": "Terputus"
+  },
+  "auth": {
+    "login_title": "CAFramework Single Sign-On",
+    "login_subtitle": "Identitas terpadu untuk seluruh 17 aplikasi CA",
+    "email_label": "Email Kerja / Nama Pengguna",
+    "password_label": "Kata Sandi Master",
+    "remember_me": "Ingat perangkat ini",
+    "sign_in": "Masuk",
+    "create_account": "Buat Akun"
+  },
+  "navigation": {
+    "dashboard": "Dasbor",
+    "hosts": "Server & Host",
+    "files": "Berkas (SFTP)",
+    "monitoring": "Pemantauan",
+    "settings": "Pengaturan",
+    "audit": "Audit Keamanan"
+  }
+}

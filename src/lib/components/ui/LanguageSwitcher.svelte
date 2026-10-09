@@ -1,34 +1,18 @@
 <script lang="ts">
-  import { getLocale, setLocale, type Locale } from '$lib/i18n/index.svelte';
+  import { getLocale, setLocale, type Locale } from '$lib/i18n';
 
-  interface Props {
-    compact?: boolean;
-    class?: string;
+  let current = $derived(getLocale());
+
+  function toggle() {
+    setLocale(current === 'en' ? 'id' : 'en');
   }
-
-  let {
-    compact = false,
-    class: customClass = '',
-  }: Props = $props();
-
-  const currentLocale = $derived(getLocale());
 </script>
 
-<div class="inline-flex items-center rounded-lg border border-neutral-200 dark:border-[#272732] bg-neutral-100 dark:bg-[#121217] p-0.5 text-xs font-medium font-sans select-none {customClass}">
-  <button
-    type="button"
-    onclick={() => setLocale('en')}
-    class="px-2 py-1 rounded-md transition-all cursor-pointer {currentLocale === 'en' ? 'bg-white dark:bg-[#1E1E26] text-neutral-900 dark:text-white shadow-xs font-semibold' : 'text-neutral-500 hover:text-neutral-800 dark:hover:text-neutral-300'}"
-    title="English"
-  >
-    {compact ? 'EN' : 'English'}
-  </button>
-  <button
-    type="button"
-    onclick={() => setLocale('id')}
-    class="px-2 py-1 rounded-md transition-all cursor-pointer {currentLocale === 'id' ? 'bg-white dark:bg-[#1E1E26] text-neutral-900 dark:text-white shadow-xs font-semibold' : 'text-neutral-500 hover:text-neutral-800 dark:hover:text-neutral-300'}"
-    title="Bahasa Indonesia"
-  >
-    {compact ? 'ID' : 'Indonesia'}
-  </button>
-</div>
+<button
+  onclick={toggle}
+  class="flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg border border-[#272732] bg-[#141419] hover:bg-[#1C1C24] text-xs font-mono font-semibold text-neutral-300 hover:text-white transition-all cursor-pointer"
+  title="Switch Language (English / Bahasa Indonesia)"
+>
+  <span class="text-neutral-500 text-[10px]">LANG:</span>
+  <span class="text-white font-bold">{current.toUpperCase()}</span>
+</button>
