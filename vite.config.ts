@@ -11,4 +11,9 @@ export default defineConfig({
     port: 5173,
     strictPort: false,
   },
+  preview: {
+    allowedHosts: true,
+    port: 8090,
+    host: "0.0.0.0",
+  },
 });
