@@ -122,6 +122,7 @@
 
   <!-- 2. Inputs & Forms -->
   <section id="input" class="space-y-4">
+  <span id="forms" class="sr-only"></span>
     <h2 class="text-lg font-bold text-white border-b border-neutral-800 pb-2">2. Forms & Inputs</h2>
     <div class="rounded-xl border border-neutral-800 bg-[#121217] p-6 grid grid-cols-1 md:grid-cols-2 gap-6">
       <div><label class="text-xs font-medium text-neutral-300 block mb-1.5">SSH Host URL</label><Input placeholder="user@remote.host:22" /></div>
@@ -170,6 +171,7 @@ echo 'Server Initialized'" rows={3} />
 
   <!-- 4. Navigation & Tabs -->
   <section id="tabs" class="space-y-4">
+  <span id="nav" class="sr-only"></span>
     <h2 class="text-lg font-bold text-white border-b border-neutral-800 pb-2">4. Navigation & Tabs</h2>
     <div class="rounded-xl border border-neutral-800 bg-[#121217] p-6 space-y-6">
       <SegmentedControl
@@ -187,6 +189,8 @@ echo 'Server Initialized'" rows={3} />
 
   <!-- 5. Overlays, Modals, & Drawers -->
   <section id="overlays" class="space-y-4">
+  <span id="popover" class="sr-only"></span>
+  <span id="toast" class="sr-only"></span>
     <h2 class="text-lg font-bold text-white border-b border-neutral-800 pb-2">5. Overlays, Modals, & Drawers</h2>
     <div class="rounded-xl border border-neutral-800 bg-[#121217] p-6 flex flex-wrap items-center gap-4">
       <Button variant="outline" onclick={() => (drawerOpen = true)}>Open Slideout Drawer</Button>
@@ -203,6 +207,10 @@ echo 'Server Initialized'" rows={3} />
 
   <!-- 6. Data Display & Trees -->
   <section id="treeview" class="space-y-4">
+  <span id="card" class="sr-only"></span>
+  <span id="avatar" class="sr-only"></span>
+  <span id="feedback" class="sr-only"></span>
+  <span id="utils" class="sr-only"></span>
     <h2 class="text-lg font-bold text-neutral-900 dark:text-white border-b border-neutral-200 dark:border-neutral-800 pb-2">6. TreeView, Progress, & Loaders</h2>
     <div class="rounded-xl border border-neutral-200 dark:border-neutral-800 bg-neutral-50 dark:bg-[#121217] p-6 grid grid-cols-1 md:grid-cols-2 gap-6">
       <div>

@@ -22,6 +22,7 @@
       title: 'Component Catalog',
       items: [
         { label: 'All Components (Interactive)', href: '/docs/components' },
+        { label: 'Design System Overview', href: '/docs' },
       ],
     },
     {
