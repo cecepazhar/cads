@@ -16,7 +16,7 @@ export { default as SplitPane } from './SplitPane.svelte';
 export { default as CommandPalette } from './CommandPalette.svelte';
 export { default as TelemetryCard } from './TelemetryCard.svelte';
 
-// 20 Primitives (Ark UI / Shadcn Style Upgrade)
+// Extended Primitives
 export { default as Avatar } from './Avatar.svelte';
 export { default as AvatarGroup } from './AvatarGroup.svelte';
 export { default as Tooltip } from './Tooltip.svelte';

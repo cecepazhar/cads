@@ -70,7 +70,7 @@
         <Logo size={32} mode="brand" />
         <div class="flex flex-col text-left">
           <span class="font-bold text-sm tracking-tight text-neutral-900 dark:text-white group-hover:text-[var(--ca-brand)] dark:group-hover:text-[var(--ca-brand)] transition">CAUI</span>
-          <span class="text-[10px] font-mono text-neutral-500">Ark UI Style Design System</span>
+          <span class="text-[10px] font-mono text-neutral-500">The UI Foundation of the CA Ecosystem</span>
         </div>
       </a>
       <nav class="hidden md:flex items-center gap-6 text-xs font-medium text-neutral-500 dark:text-neutral-400">
@@ -83,18 +83,10 @@
     <div class="flex items-center gap-3">
       <LanguageSwitcher />
       <ThemeSwitcher />
-      <a
-        href="https://github.com/cecepazhar/caui"
-        target="_blank"
-        rel="noreferrer"
-        class="text-xs px-3.5 py-1.5 rounded-lg border border-neutral-300 dark:border-neutral-700 bg-neutral-100 dark:bg-neutral-900 hover:bg-neutral-200 dark:hover:bg-neutral-800 text-neutral-700 dark:text-neutral-300 font-mono transition"
-      >
-        GitHub
-      </a>
     </div>
   </header>
 
-  <!-- Hero Section (Ark UI Style) -->
+  <!-- Hero Section -->
   <main class="flex-1 max-w-7xl w-full mx-auto px-6 py-16 md:py-24 space-y-20">
     <div class="text-center max-w-3xl mx-auto space-y-6">
       <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-neutral-800 bg-[#121217] text-xs font-mono text-neutral-300">
@@ -134,13 +126,35 @@
         </a>
       </div>
 
+      <!-- Repository & Package Links -->
+      <div class="flex items-center justify-center gap-3 pt-1">
+        <a
+          href="https://github.com/cecepazhar/caui"
+          target="_blank"
+          rel="noreferrer"
+          class="inline-flex items-center gap-2 text-xs px-3.5 py-2 rounded-lg border border-neutral-300 dark:border-neutral-700 bg-neutral-100 dark:bg-neutral-900 hover:bg-neutral-200 dark:hover:bg-neutral-800 text-neutral-700 dark:text-neutral-300 transition"
+        >
+          <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor" aria-hidden="true"><path d="M12 .5C5.37.5 0 5.78 0 12.29c0 5.21 3.44 9.63 8.21 11.19.6.11.82-.26.82-.57 0-.28-.01-1.02-.02-2-3.34.72-4.04-1.58-4.04-1.58-.55-1.37-1.34-1.74-1.34-1.74-1.09-.73.08-.72.08-.72 1.2.08 1.84 1.22 1.84 1.22 1.07 1.8 2.81 1.28 3.5.98.11-.76.42-1.28.76-1.57-2.67-.3-5.47-1.31-5.47-5.83 0-1.29.47-2.34 1.24-3.17-.12-.3-.54-1.52.12-3.16 0 0 1.01-.32 3.3 1.21a11.6 11.6 0 013.01-.4c1.02.01 2.05.14 3.01.4 2.29-1.53 3.3-1.21 3.3-1.21.66 1.64.24 2.86.12 3.16.77.83 1.24 1.88 1.24 3.17 0 4.53-2.81 5.53-5.49 5.82.43.37.81 1.1.81 2.22 0 1.61-.01 2.9-.01 3.3 0 .31.21.69.83.57A12.02 12.02 0 0024 12.29C24 5.78 18.63.5 12 .5z"/></svg>
+          GitHub
+        </a>
+        <a
+          href="https://www.npmjs.com/package/@cecepazhar/caui"
+          target="_blank"
+          rel="noreferrer"
+          class="inline-flex items-center gap-2 text-xs px-3.5 py-2 rounded-lg border border-neutral-300 dark:border-neutral-700 bg-neutral-100 dark:bg-neutral-900 hover:bg-neutral-200 dark:hover:bg-neutral-800 text-neutral-700 dark:text-neutral-300 transition"
+        >
+          <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor" aria-hidden="true"><path d="M1.763 0C.786 0 0 .786 0 1.763v20.474C0 23.214.786 24 1.763 24h20.474c.977 0 1.763-.786 1.763-1.763V1.763C23.214.786 22.428 0 21.451 0H1.763zM5.13 5.323l13.837.019v13.818h-6.907v-6.92H8.95v6.92H5.13V5.323z"/></svg>
+          npm
+        </a>
+      </div>
+
       <!-- Author Attribution -->
       <div class="text-[11px] text-neutral-500 pt-2">
         Architected & Engineered by <a href="https://cecepazhar.com" target="_blank" class="text-neutral-300 underline underline-offset-4 hover:text-white">Cecep Saeful Azhar Hidayat, ST</a> · Fathforce Ecosystem
       </div>
     </div>
 
-    <!-- Live Interactive Sandbox (Ark UI Style) -->
+    <!-- Live Interactive Sandbox -->
     <div class="rounded-2xl border border-[#272732] bg-[#121217] p-6 md:p-8 shadow-2xl space-y-6">
       <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-neutral-800 pb-4">
         <div>
@@ -262,6 +276,7 @@
         <a href="https://cecepazhar.com" target="_blank" class="hover:text-white transition">cecepazhar.com</a>
         <a href="https://fathforce.com" target="_blank" class="hover:text-white transition">Fathforce</a>
         <a href="https://github.com/cecepazhar/caui" target="_blank" class="hover:text-white transition">GitHub</a>
+        <a href="https://www.npmjs.com/package/@cecepazhar/caui" target="_blank" class="hover:text-white transition">npm</a>
       </div>
     </div>
   </footer>

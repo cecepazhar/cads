@@ -75,7 +75,7 @@
         <Logo size={32} mode="brand" />
         <div class="flex flex-col text-left">
           <span class="font-bold text-sm tracking-tight text-neutral-900 dark:text-white group-hover:text-[var(--ca-brand)] dark:group-hover:text-[var(--ca-brand)] transition">CAUI</span>
-          <span class="text-[10px] font-mono text-neutral-500">Ark UI Style Design System</span>
+          <span class="text-[10px] font-mono text-neutral-500">The UI Foundation of the CA Ecosystem</span>
         </div>
       </a>
       <nav class="hidden md:flex items-center gap-6 text-xs font-medium text-neutral-500 dark:text-neutral-400">
@@ -88,14 +88,6 @@
     <div class="flex items-center gap-3">
       <LanguageSwitcher />
       <ThemeSwitcher />
-      <a
-        href="https://github.com/cecepazhar/caui"
-        target="_blank"
-        rel="noreferrer"
-        class="text-xs px-3.5 py-1.5 rounded-lg border border-neutral-300 dark:border-neutral-700 bg-neutral-100 dark:bg-neutral-900 hover:bg-neutral-200 dark:hover:bg-neutral-800 text-neutral-700 dark:text-neutral-300 font-mono transition"
-      >
-        GitHub
-      </a>
     </div>
   </header>
 

@@ -1,5 +1,10 @@
 <script lang="ts">
   import type { Snippet } from 'svelte';
+  import type { ComponentVariant, ComponentSize } from './types';
+  import Icon from './Icon.svelte';
+
+  type FramelessHeaderVariant = Extract<ComponentVariant, 'primary' | 'ghost'>;
+  type FramelessHeaderSize = Extract<ComponentSize, 'sm' | 'md'>;
 
   interface Props {
     title?: string;
@@ -10,6 +15,8 @@
     onClose?: () => void;
     leadingSlot?: Snippet;
     trailingSlot?: Snippet;
+    variant?: FramelessHeaderVariant;
+    size?: FramelessHeaderSize;
   }
 
   let {
@@ -20,25 +27,38 @@
     onMaximize,
     onClose,
     leadingSlot,
-    trailingSlot
+    trailingSlot,
+    variant = 'primary',
+    size = 'md',
   }: Props = $props();
+
+  const variantClasses: Record<FramelessHeaderVariant, string> = {
+    primary: 'bg-[var(--ca-surface)] border-[var(--ca-border)]',
+    ghost: 'bg-transparent border-transparent',
+  };
+
+  const sizeClasses: Record<FramelessHeaderSize, string> = {
+    sm: 'h-8 text-[10px] px-2',
+    md: 'h-10 text-xs px-3',
+  };
 </script>
 
 <header
+  role="banner"
   data-tauri-drag-region
-  class="h-10 w-full bg-[#0A0A0C] border-b border-[#1E1E24] flex items-center justify-between px-3 select-none z-40 text-xs font-sans"
+  class="w-full border-b flex items-center justify-between select-none z-40 font-sans {variantClasses[variant]} {sizeClasses[size]}"
 >
   <!-- Left section -->
   <div class="flex items-center gap-2.5">
     {#if leadingSlot}
       {@render leadingSlot()}
     {:else}
-      <div class="w-3 h-3 rounded-full bg-[var(--ca-brand,#ef4444)]/80"></div>
+      <div class="w-3 h-3 rounded-full bg-[var(--ca-brand)]/80"></div>
     {/if}
     <div class="flex items-baseline gap-2">
-      <span class="font-bold text-white tracking-wide">{title}</span>
+      <span class="font-bold text-[var(--ca-text-primary)] tracking-wide">{title}</span>
       {#if subtitle}
-        <span class="text-[10px] text-neutral-500 font-mono">{subtitle}</span>
+        <span class="text-[10px] text-[var(--ca-text-muted)] font-mono">{subtitle}</span>
       {/if}
     </div>
   </div>
@@ -53,20 +73,18 @@
     {/if}
 
     {#if showControls}
-      <div class="flex items-center gap-1 border-l border-[#1E1E24] pl-2 ml-1">
+      <div class="flex items-center gap-1 border-l border-[var(--ca-border)] pl-2 ml-1">
         <button
           onclick={onMinimize}
-          class="w-6 h-6 rounded flex items-center justify-center text-neutral-400 hover:text-white hover:bg-white/5 transition-colors"
-          title="Minimize"
+          class="w-6 h-6 rounded flex items-center justify-center text-[var(--ca-text-muted)] hover:text-[var(--ca-text-primary)] hover:bg-white/5 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--ca-brand)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--ca-surface)]"
+          aria-label="Minimize"
         >
-          <svg class="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 12H4" />
-          </svg>
+          <Icon name="minus" size={12} />
         </button>
         <button
           onclick={onMaximize}
-          class="w-6 h-6 rounded flex items-center justify-center text-neutral-400 hover:text-white hover:bg-white/5 transition-colors"
-          title="Maximize"
+          class="w-6 h-6 rounded flex items-center justify-center text-[var(--ca-text-muted)] hover:text-[var(--ca-text-primary)] hover:bg-white/5 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--ca-brand)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--ca-surface)]"
+          aria-label="Maximize"
         >
           <svg class="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <rect x="5" y="5" width="14" height="14" rx="2" stroke-width="2" />
@@ -74,12 +92,10 @@
         </button>
         <button
           onclick={onClose}
-          class="w-6 h-6 rounded flex items-center justify-center text-neutral-400 hover:text-white hover:bg-rose-500/20 hover:text-rose-400 transition-colors"
-          title="Close"
+          class="w-6 h-6 rounded flex items-center justify-center text-[var(--ca-text-muted)] hover:text-rose-400 hover:bg-rose-500/20 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--ca-brand)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--ca-surface)]"
+          aria-label="Close"
         >
-          <svg class="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-          </svg>
+          <Icon name="x" size={12} />
         </button>
       </div>
     {/if}

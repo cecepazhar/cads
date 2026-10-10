@@ -15,7 +15,7 @@
     <Badge variant="brand" size="xs">CAUI ARCHITECTURE v1.0</Badge>
     <h1 class="text-3xl font-extrabold text-white mt-2 tracking-tight">Overview & Quickstart</h1>
     <p class="text-sm text-neutral-400 mt-2 leading-relaxed">
-      CAUI (CA Design System) adalah pustaka komponen UI monoline wireframe & tech-brutalist bergaya Ark UI dan Shadcn, dibangun secara native di atas <strong>Svelte 5 Runes</strong> untuk 17 aplikasi ekosistem CA.
+      CAUI (CA Design System) adalah pustaka komponen UI monoline wireframe & tech-brutalist, dibangun secara native di atas <strong>Svelte 5 Runes</strong> untuk 17 aplikasi ekosistem CA.
     </p>
   </div>
 

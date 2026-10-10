@@ -9,5 +9,6 @@
 
 <div
   role="separator"
-  class="shrink-0 bg-neutral-800 {orientation === 'horizontal' ? 'h-px w-full my-2' : 'w-px h-full min-h-[16px] mx-2'} {customClass}"
+  aria-orientation={orientation}
+  class="shrink-0 bg-[var(--ca-border)] {orientation === 'horizontal' ? 'h-px w-full my-2' : 'w-px h-full min-h-[16px] mx-2'} {customClass}"
 ></div>

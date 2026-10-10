@@ -46,6 +46,33 @@
     window.addEventListener('mousemove', handleMouseMove);
     window.addEventListener('mouseup', handleMouseUp);
   }
+
+  function handleKeydown(e: KeyboardEvent) {
+    const step = 1;
+    let handled = false;
+
+    if (direction === 'horizontal') {
+      if (e.key === 'ArrowLeft') {
+        split = Math.max(minSize, split - step);
+        handled = true;
+      } else if (e.key === 'ArrowRight') {
+        split = Math.min(100 - minSize, split + step);
+        handled = true;
+      }
+    } else {
+      if (e.key === 'ArrowUp') {
+        split = Math.max(minSize, split - step);
+        handled = true;
+      } else if (e.key === 'ArrowDown') {
+        split = Math.min(100 - minSize, split + step);
+        handled = true;
+      }
+    }
+
+    if (handled) {
+      e.preventDefault();
+    }
+  }
 </script>
 
 <div class="flex-1 w-full h-full flex {direction === 'horizontal' ? 'flex-row' : 'flex-col'} overflow-hidden relative">
@@ -58,8 +85,13 @@
   <div
     role="separator"
     tabindex="0"
+    aria-orientation={direction === 'horizontal' ? 'vertical' : 'horizontal'}
+    aria-valuenow={Math.round(split)}
+    aria-valuemin={minSize}
+    aria-valuemax={100 - minSize}
     onmousedown={handleMouseDown}
-    class="{direction === 'horizontal' ? 'w-1 cursor-col-resize hover:bg-[var(--ca-brand,#ef4444)]' : 'h-1 cursor-row-resize hover:bg-[var(--ca-brand,#ef4444)]'} bg-[#1E1E24] transition-colors relative z-20 shrink-0 select-none {isDragging ? 'bg-[var(--ca-brand,#ef4444)]' : ''}"
+    onkeydown={handleKeydown}
+    class="{direction === 'horizontal' ? 'w-1 cursor-col-resize hover:bg-[var(--ca-brand)]' : 'h-1 cursor-row-resize hover:bg-[var(--ca-brand)]'} bg-[var(--ca-border)] transition-colors relative z-20 shrink-0 select-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--ca-brand)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--ca-surface)] {isDragging ? 'bg-[var(--ca-brand)]' : ''}"
   ></div>
 
   <!-- Second Pane -->
