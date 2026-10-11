@@ -60,3 +60,9 @@ export { default as MentionInput } from './MentionInput.svelte';
 export { default as NumberInput } from './NumberInput.svelte';
 export { default as Resizable } from './Resizable.svelte';
 export { default as Stepper } from './Stepper.svelte';
+
+// CATerm visual effects — generalized reusable components
+export { default as AnimatedBackground } from './AnimatedBackground.svelte';
+export { default as AmbientOverlay } from './AmbientOverlay.svelte';
+export { default as AnimatedAvatar } from './AnimatedAvatar.svelte';
+export { default as MobileBottomNav } from './MobileBottomNav.svelte';

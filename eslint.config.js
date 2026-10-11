@@ -9,9 +9,32 @@ export default ts.config(
   {
     files: ["**/*.svelte", "**/*.svelte.ts"],
     languageOptions: {
+      globals: {
+        $state: 'readonly',
+        $derived: 'readonly',
+        $effect: 'readonly',
+        $props: 'readonly',
+        $bindable: 'readonly',
+        $inspect: 'readonly',
+        $host: 'readonly',
+      },
       parserOptions: {
         parser: ts.parser,
       },
+    },
+    rules: {
+      'svelte/no-navigation-without-resolve': 'off',
+    },
+  },
+  {
+    rules: {
+      '@typescript-eslint/no-unused-vars': ['error', {
+        args: 'all',
+        argsIgnorePattern: '^_',
+        varsIgnorePattern: '^_',
+        destructuredArrayIgnorePattern: '^_',
+      }],
+      '@typescript-eslint/no-explicit-any': 'warn',
     },
   },
   {

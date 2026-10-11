@@ -24,6 +24,7 @@
     variant?: ContextMenuVariant;
     size?: ContextMenuSize;
     class?: string;
+    children?: Snippet;
   }
 
   let {
@@ -34,6 +35,7 @@
     variant = 'primary',
     size = 'md',
     class: customClass = '',
+    children,
   }: Props = $props();
 
   let activeIndex = $state(0);
