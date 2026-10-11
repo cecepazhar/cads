@@ -3,6 +3,7 @@
   import { CalendarRange, ChevronLeft, ChevronRight } from 'lucide-svelte';
   import { focusTrap, clickOutside, uid } from '../../utils/a11y';
   import { tick } from 'svelte';
+  import { SvelteDate } from 'svelte/reactivity';
 
   export type DateRangePickerVariant = Extract<ComponentVariant, 'primary' | 'outline'>;
   export type DateRangePickerSize = Extract<ComponentSize, 'sm' | 'md' | 'lg'>;
@@ -55,7 +56,6 @@
 
   let open = $state(false);
   let triggerEl = $state<HTMLDivElement | null>(null);
-  // eslint-disable-next-line svelte/prefer-svelte-reactivity
   let calendarMonth = $state(start ? parseDateToMonth(start) : new Date());
   let hoverDate = $state('');
   let selectingEnd = $state(false);
@@ -197,15 +197,13 @@
   }
 
   function prevMonth() {
-    // eslint-disable-next-line svelte/prefer-svelte-reactivity
-    const d = new Date(calendarMonth);
+    const d = new SvelteDate(calendarMonth);
     d.setMonth(d.getMonth() - 1);
     calendarMonth = d;
   }
 
   function nextMonth() {
-    // eslint-disable-next-line svelte/prefer-svelte-reactivity
-    const d = new Date(calendarMonth);
+    const d = new SvelteDate(calendarMonth);
     d.setMonth(d.getMonth() + 1);
     calendarMonth = d;
   }
@@ -225,32 +223,32 @@
   }
 
   function handleCellKeydown(e: KeyboardEvent, date: Date) {
-    let newDate: Date | null = null;
+    let newDate: Date;
 
     switch (e.key) {
       case 'ArrowLeft':
         e.preventDefault();
-        newDate = new Date(date);
+        newDate = new SvelteDate(date);
         newDate.setDate(newDate.getDate() - 1);
         break;
       case 'ArrowRight':
         e.preventDefault();
-        newDate = new Date(date);
+        newDate = new SvelteDate(date);
         newDate.setDate(newDate.getDate() + 1);
         break;
       case 'ArrowUp':
         e.preventDefault();
-        newDate = new Date(date);
+        newDate = new SvelteDate(date);
         newDate.setDate(newDate.getDate() - 7);
         break;
       case 'ArrowDown':
         e.preventDefault();
-        newDate = new Date(date);
+        newDate = new SvelteDate(date);
         newDate.setDate(newDate.getDate() + 7);
         break;
       case 'PageUp':
         e.preventDefault();
-        newDate = new Date(date);
+        newDate = new SvelteDate(date);
         if (e.shiftKey) {
           newDate.setFullYear(newDate.getFullYear() - 1);
         } else {
@@ -259,7 +257,7 @@
         break;
       case 'PageDown':
         e.preventDefault();
-        newDate = new Date(date);
+        newDate = new SvelteDate(date);
         if (e.shiftKey) {
           newDate.setFullYear(newDate.getFullYear() + 1);
         } else {
@@ -268,7 +266,7 @@
         break;
       case 'Home':
         e.preventDefault();
-        newDate = new Date(date);
+        newDate = new SvelteDate(date);
         {
           const dow = newDate.getDay();
           const diff = (dow - weekStart + 7) % 7;
@@ -277,7 +275,7 @@
         break;
       case 'End':
         e.preventDefault();
-        newDate = new Date(date);
+        newDate = new SvelteDate(date);
         {
           const dow = newDate.getDay();
           const diff = (6 - dow + weekStart + 7) % 7;
@@ -293,9 +291,7 @@
         return;
     }
 
-    if (newDate) {
-      moveFocus(newDate);
-    }
+    moveFocus(newDate);
   }
 
   function toggle() {
@@ -435,7 +431,7 @@
         <table role="grid" aria-label="Calendar">
           <thead>
             <tr>
-              {#each dayNames as day}
+              {#each dayNames as day (day)}
                 <th
                   role="columnheader"
                   scope="col"

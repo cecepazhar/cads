@@ -31,7 +31,7 @@
     { label: 'SSH Zero-Trust Gates', value: '100%', change: 'Active', trend: 'up', icon: 'shield' },
   ];
 
-  const columns: Column<ServerRow>[] = [
+  const columns: Column[] = [
     { key: 'name', label: 'Host Node', sortable: true },
     { key: 'ip', label: 'IP Address / Domain', sortable: true },
     { key: 'region', label: 'Region', sortable: true },
@@ -102,7 +102,7 @@
         data={serverData}
         striped
         pageSize={5}
-        onRowClick={(row) => (selectedServer = row)}
+        onRowClick={(row) => (selectedServer = row as ServerRow)}
       >
         {#snippet cell({ column, value })}
           {#if column.key === 'name'}
@@ -125,7 +125,7 @@
           <div class="flex items-center justify-end gap-1">
             <button
               type="button"
-              onclick={() => (selectedServer = item)}
+              onclick={() => (selectedServer = item as ServerRow)}
               class="p-1 rounded text-neutral-400 hover:text-white hover:bg-neutral-800 transition cursor-pointer"
               title="Inspect"
             >

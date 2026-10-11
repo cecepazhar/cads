@@ -126,7 +126,7 @@
         { label: 'With ARIA', value: '56', color: '--ca-success' },
         { label: 'Hex Literals', value: '0', color: '--ca-warning' },
         { label: 'Test Files', value: '20', color: '--ca-info' }
-      ] as stat}
+      ] as stat (stat.label)}
         <div class="rounded-xl border border-[var(--ca-border)] bg-[var(--ca-surface-elevated)] p-5 text-center space-y-1">
           <div class="text-3xl font-extrabold" style="color: var({stat.color})">{stat.value}</div>
           <div class="text-xs text-[var(--ca-text-muted)]">{stat.label}</div>
@@ -185,12 +185,12 @@
     <p class="text-xs text-[var(--ca-text-muted)]">Props: variant (10 values), size (sm/md/lg/icon), loading, disabled</p>
     <div class={sectionCard}>
       <div class="flex flex-wrap items-center gap-3">
-        {#each buttonVariants as v}
+        {#each buttonVariants as v (v)}
           <Button variant={v}>{v.charAt(0).toUpperCase() + v.slice(1)}</Button>
         {/each}
       </div>
       <div class="flex flex-wrap items-center gap-2">
-        {#each ['sm', 'md', 'lg'] as s}
+        {#each ['sm', 'md', 'lg'] as s (s)}
           <Button size={s as any}>{s.toUpperCase()}</Button>
         {/each}
         <Button size="icon" aria-label="Icon button"><Icon name="settings" /></Button>
@@ -209,7 +209,7 @@
     <p class="text-xs text-[var(--ca-text-muted)]">Props: variant (10 + neutral), size (xs/sm/md)</p>
     <div class={sectionCard}>
       <div class="flex flex-wrap items-center gap-2">
-        {#each badgeVariants as v}
+        {#each badgeVariants as v (v)}
           <Badge variant={v}>{v}</Badge>
         {/each}
       </div>
@@ -226,7 +226,7 @@
     <h2 class={sectionTitle}>Alert</h2>
     <p class="text-xs text-[var(--ca-text-muted)]">Props: variant (neutral/info/success/warning/danger), title, dismissible</p>
     <div class={sectionCard}>
-      {#each alertVariants as v}
+      {#each alertVariants as v (v)}
         <Alert variant={v} title="{v.charAt(0).toUpperCase() + v.slice(1)} alert message" dismissible>
           This is a {v} level alert with dismissible support.
         </Alert>
@@ -523,11 +523,9 @@
         { id: 'security', label: 'Security' },
         { id: 'network', label: 'Network' }
       ]}>
-        {#snippet children()}
-          <div class="p-3 bg-[var(--ca-surface)] border border-[var(--ca-border)] rounded-lg text-xs font-mono text-[var(--ca-text-secondary)]">
-            Tab panel content — select a tab above to view different settings.
-          </div>
-        {/snippet}
+        <div class="p-3 bg-[var(--ca-surface)] border border-[var(--ca-border)] rounded-lg text-xs font-mono text-[var(--ca-text-secondary)]">
+          Tab panel content — select a tab above to view different settings.
+        </div>
       </Tabs>
     </div>
   </section>
@@ -627,9 +625,7 @@
           { label: 'Inspect Element', action: () => {} },
           { label: 'View Source', action: () => {} },
           { label: 'Delete', danger: true, action: () => {} }
-        ]}>
-          <span>Right-click this area</span>
-        </ContextMenu>
+        ]} />
       </div>
     </div>
   </section>
@@ -770,7 +766,7 @@
     <p class="text-xs text-[var(--ca-text-muted)]">Props: name (38 icons), size (number/string)</p>
     <div class={sectionCard}>
       <div class="flex flex-wrap items-center gap-4">
-        {#each iconNames as iconName}
+        {#each iconNames as iconName (iconName)}
           <div class="flex flex-col items-center gap-1 w-14">
             <Icon name={iconName} size={18} />
             <span class="text-[9px] text-[var(--ca-text-muted)] text-center leading-tight">{iconName}</span>
@@ -904,7 +900,7 @@
     <div class={sectionCard}>
       <Carousel items={3} showDots showArrows />
       <div class="grid grid-cols-3 gap-2 mt-2">
-        {#each carouselItems as slide}
+        {#each carouselItems as slide (slide)}
           <div class="h-20 flex items-center justify-center bg-[var(--ca-surface)] border border-[var(--ca-border)] rounded-lg text-xs text-[var(--ca-text-secondary)]">
             {slide}
           </div>

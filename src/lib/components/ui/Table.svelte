@@ -6,7 +6,7 @@
   type TableVariant = Extract<ComponentVariant, 'primary' | 'outline'>;
   type TableSize = Extract<ComponentSize, 'sm' | 'md' | 'lg'>;
 
-  export interface Column<T = unknown> {
+  export interface Column {
     key: string;
     label: string;
     sortable?: boolean;
@@ -14,9 +14,9 @@
     width?: string;
   }
 
-  interface Props<T = unknown> {
-    columns: Column<T>[];
-    data: T[];
+  interface Props {
+    columns: Column[];
+    data: unknown[];
     sortKey?: string;
     sortDirection?: 'asc' | 'desc';
     striped?: boolean;
@@ -29,10 +29,10 @@
     pageSize?: number;
     emptyText?: string;
     class?: string;
-    onRowClick?: (row: T) => void;
+    onRowClick?: (row: unknown) => void;
     onSort?: (key: string, direction: 'asc' | 'desc') => void;
-    cell?: Snippet<[{ item: T; column: Column<T>; value: unknown }]>;
-    actions?: Snippet<[{ item: T }]>;
+    cell?: Snippet<[{ item: unknown; column: Column; value: unknown }]>;
+    actions?: Snippet<[{ item: unknown }]>;
   }
 
   let {

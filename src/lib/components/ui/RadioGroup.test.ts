@@ -1,5 +1,5 @@
 import { render, screen, fireEvent } from '@testing-library/svelte';
-import { describe, it, expect, vi } from 'vitest';
+import { describe, it, expect } from 'vitest';
 import RadioGroup from './RadioGroup.svelte';
 
 const options = [
@@ -36,7 +36,7 @@ describe('RadioGroup', () => {
   });
 
   it('selects a radio on click', async () => {
-    const { component } = render(RadioGroup, { props: { options, value: '' } });
+    const { component: _component } = render(RadioGroup, { props: { options, value: '' } });
     const radios = screen.getAllByRole('radio') as HTMLInputElement[];
     await fireEvent.click(radios[0]);
     // Svelte bindable: value updates via onchange

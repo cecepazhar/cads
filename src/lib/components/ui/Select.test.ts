@@ -1,5 +1,5 @@
-import { render, screen, fireEvent } from '@testing-library/svelte';
-import { describe, it, expect, vi } from 'vitest';
+import { render, screen } from '@testing-library/svelte';
+import { describe, it, expect } from 'vitest';
 import Select from './Select.svelte';
 
 const options = [

@@ -53,8 +53,7 @@
   let secondaryG = 165;
   let secondaryB = 233;
   let resolvedPrimary = 'rgb(56, 189, 248)';
-  // eslint-disable-next-line no-unused-vars
-  let resolvedSecondary = 'rgb(14, 165, 233)';
+  let _resolvedSecondary = 'rgb(14, 165, 233)';
 
   const SPEEDS = [0.65, 0.9, 1.15, 1.4, 1.65];
 
@@ -139,15 +138,13 @@
     secondaryR = s.r;
     secondaryG = s.g;
     secondaryB = s.b;
-    resolvedSecondary = s.str;
+    _resolvedSecondary = s.str;
   }
 
   // ── Grid helpers ──────────────────────────────────────────────────────────
 
   function getGridOffset() {
-    // eslint-disable-next-line no-unused-vars
     const tx = effectiveTargetX;
-    // eslint-disable-next-line no-unused-vars
     const ty = effectiveTargetY;
     const startX = ((tx % cellSize) + cellSize) % cellSize;
     const startY = ((ty % cellSize) + cellSize) % cellSize;
@@ -456,8 +453,8 @@
       return;
     }
 
-    const tx = effectiveTargetX;
-    const ty = effectiveTargetY;
+    const _tx = effectiveTargetX;
+    const _ty = effectiveTargetY;
 
     ctx.clearRect(0, 0, width, height);
     drawGrid();

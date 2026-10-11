@@ -163,7 +163,7 @@
   style="background-color: color-mix(in srgb, var(--ca-surface) 90%, transparent)"
 >
   <div class="flex items-stretch {sizeCfg.bar} px-1">
-    {#each items as item, index (item.id || index)}
+    {#each items as item, index (item.label || index)}
       {@const IconComp = resolveIcon(item.icon)}
       {@const active = isActive(item, index)}
       {@const activeCls = active ? activeClasses[variant] : inactiveClass}

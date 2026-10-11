@@ -21,8 +21,8 @@
 
   let {
     options = [],
-    // eslint-disable-next-line no-unused-vars, no-useless-assignment
-    value = $bindable(''),
+    // eslint-disable-next-line no-useless-assignment
+    value: _value = $bindable(''),
     placeholder = 'Search...',
     variant = 'primary',
     size = 'md',
@@ -44,7 +44,7 @@
   }
 
   function selectOption(opt: ComboboxOption) {
-    value = opt.value;
+    _value = opt.value;
     query = opt.label;
     open = false;
     activeIndex = -1;
@@ -123,7 +123,7 @@
       role="listbox"
       class="absolute z-50 mt-1 max-h-48 w-full overflow-y-auto rounded-lg border border-[var(--ca-border)] bg-[var(--ca-surface-subtle)] p-1 shadow-2xl"
     >
-      {#each filtered as opt, i}
+      {#each filtered as opt, i (i)}
         <button
           id={getOptionId(i)}
           type="button"

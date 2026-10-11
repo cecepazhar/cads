@@ -57,7 +57,7 @@
     <span class="font-mono text-xs text-[var(--ca-text-secondary)] bg-[var(--ca-surface-elevated)] border border-[var(--ca-border)] px-2 py-1 rounded">{value}</span>
   </div>
   <div class="flex items-center gap-1.5 pt-1">
-    {#each presets as preset}
+    {#each presets as preset (preset.hex)}
       <button
         type="button"
         onclick={() => (value = preset.hex)}
