@@ -246,7 +246,7 @@
       aria-label="Slide navigation"
       class="absolute bottom-3 left-1/2 -translate-x-1/2 z-10 flex items-center gap-1.5"
     >
-      {#each { length: total } as _, i}
+      {#each { length: total } as _, i (i)}
         <button
           id="{carouselId}-dot-{i}"
           type="button"

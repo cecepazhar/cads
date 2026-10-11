@@ -88,7 +88,7 @@
       role="radiogroup"
       aria-label="Brand accent color"
     >
-      {#each brandAccents as b}
+      {#each brandAccents as b (b.hex)}
         <button
           type="button"
           onclick={() => setBrandAccent(b.hex)}

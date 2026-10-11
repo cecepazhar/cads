@@ -1,0 +1,148 @@
+/* CAUI Animation Keyframes — 17 shared keyframes extracted from CATerm/caframework/camark */
+/* Exported as tokens: --ca-motion-* duration/easing variables */
+
+:root {
+  /* Motion Duration Tokens */
+  --ca-motion-duration-instant: 0ms;
+  --ca-motion-duration-fast: 100ms;
+  --ca-motion-duration-normal: 150ms;
+  --ca-motion-duration-slow: 300ms;
+  --ca-motion-duration-slower: 500ms;
+
+  /* Motion Easing Tokens */
+  --ca-motion-ease: ease;
+  --ca-motion-ease-in: ease-in;
+  --ca-motion-ease-out: ease-out;
+  --ca-motion-ease-in-out: ease-in-out;
+}
+
+/* Animation Keyframes */
+
+@keyframes ambient-aurora-wave {
+  0%, 100% {
+    background: radial-gradient(
+      circle at 10% 20%,
+      var(--ca-glow-from, var(--ca-brand)),
+      var(--ca-glow-to, var(--ca-success)) 50%,
+      var(--ca-glow-from, var(--ca-brand)) 90%
+    );
+    transform: scale(1);
+  }
+  50% {
+    background: radial-gradient(
+      circle at 80% 80%,
+      var(--ca-glow-to, var(--ca-success)),
+      var(--ca-glow-from, var(--ca-brand)) 50%,
+      var(--ca-glow-to, var(--ca-success)) 90%
+    );
+    transform: scale(1.01);
+  }
+}
+
+@keyframes ambient-breathe {
+  0%, 100% {
+    opacity: 0.35;
+    transform: scale(0.998);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.002);
+  }
+}
+
+@keyframes ambient-pulse-slow {
+  0%, 100% { opacity: 0.5; }
+  50% { opacity: 0.95; }
+}
+
+@keyframes ambient-rgb-cycle {
+  0% { filter: hue-rotate(0deg); }
+  100% { filter: hue-rotate(360deg); }
+}
+
+@keyframes card-glow-spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes halo-pulse {
+  0% { transform: scale(0.97); opacity: 0.5; }
+  100% { transform: scale(1.05); opacity: 0.65; }
+}
+
+@keyframes halo-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes ping {
+  0% { transform: scale(1); opacity: 0.6; }
+  75%, 100% { transform: scale(1.5); opacity: 0; }
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* Utility Classes */
+
+.card-glow-spin {
+  animation: card-glow-spin var(--duration, 4s) linear infinite;
+}
+
+.ambient-breathe {
+  animation: ambient-breathe var(--duration, 4s) ease-in-out infinite;
+}
+
+.ambient-pulse-slow {
+  animation: ambient-pulse-slow var(--duration, 4s) ease-in-out infinite;
+}
+
+.ambient-rgb-cycle {
+  animation: ambient-rgb-cycle var(--duration, 6s) linear infinite;
+}
+
+.ambient-aurora-wave {
+  animation: ambient-aurora-wave var(--duration, 8s) ease-in-out infinite;
+}
+
+.halo-spin {
+  animation: halo-spin var(--halo-speed, 4s) linear infinite;
+}
+
+.halo-pulse {
+  animation: halo-pulse var(--halo-speed, 4s) ease-in-out infinite alternate;
+}
+
+.ping {
+  animation: ping var(--ca-motion-duration-slower) cubic-bezier(0, 0, 0.2, 1) infinite;
+}
+
+.pulse {
+  animation: pulse var(--ca-motion-duration-slower) ease-in-out infinite;
+}
+
+.spin {
+  animation: spin var(--ca-motion-duration-normal) linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .card-glow-spin,
+  .ambient-breathe,
+  .ambient-pulse-slow,
+  .ambient-rgb-cycle,
+  .ambient-aurora-wave,
+  .halo-spin,
+  .halo-pulse,
+  .ping,
+  .pulse,
+  .spin {
+    animation: none;
+  }
+}

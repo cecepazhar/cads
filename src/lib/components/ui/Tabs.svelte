@@ -94,7 +94,7 @@
 
 <div class="w-full flex flex-col {customClass}">
   <div role="tablist" class="flex items-center {variantStyles[variant]}">
-    {#each items as item, i}
+    {#each items as item, i (item.id)}
       <button
         id="tab-{item.id}"
         type="button"

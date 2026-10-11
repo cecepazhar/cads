@@ -71,7 +71,7 @@
   role="radiogroup"
   class="inline-flex items-center rounded-lg border {variantClasses[variant]} {sizeClasses[size]} {customClass}"
 >
-  {#each options as opt, i}
+  {#each options as opt, i (opt.value)}
     <button
       id="segment-{opt.value}"
       type="button"

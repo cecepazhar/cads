@@ -79,7 +79,7 @@
 </script>
 
 <div class="flex items-center gap-2 {customClass}" onpaste={handlePaste}>
-  {#each Array(length) as _, i}
+  {#each Array(length) as _, i (i)}
     <input
       type="text"
       inputmode="numeric"

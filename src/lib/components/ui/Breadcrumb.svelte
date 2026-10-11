@@ -32,7 +32,7 @@
 
 <nav aria-label="Breadcrumb" class="{variantClasses[variant]} {sizeClasses[size]} {customClass}">
   <ol class="flex items-center gap-2">
-    {#each items as item, index}
+    {#each items as item, index (index)}
       {#if index > 0}
         <li aria-hidden="true" class="text-neutral-600 select-none">{separator}</li>
       {/if}

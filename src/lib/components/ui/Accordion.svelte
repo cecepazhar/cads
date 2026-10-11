@@ -84,7 +84,7 @@
 </script>
 
 <div class="flex flex-col gap-2 w-full {customClass}">
-  {#each items as item, i}
+  {#each items as item, i (item.id)}
     {@const isOpen = openIds.includes(item.id)}
     <div class="rounded-lg border overflow-hidden {variantClasses[variant]}">
       <button

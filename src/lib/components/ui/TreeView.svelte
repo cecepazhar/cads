@@ -185,7 +185,7 @@
     </div>
     {#if isFolder && isExpanded && node.children}
       <div role="group">
-        {#each node.children as child}
+        {#each node.children as child (child.id)}
           {@render renderNode(child, depth + 1)}
         {/each}
       </div>
@@ -200,7 +200,7 @@
   class="flex flex-col w-full font-mono {customClass}"
   onkeydown={handleKeydown}
 >
-  {#each nodes as node}
+  {#each nodes as node (node.id)}
     {@render renderNode(node, 0)}
   {/each}
 </div>

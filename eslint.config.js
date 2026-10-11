@@ -1,6 +1,7 @@
 import js from "@eslint/js";
 import ts from "typescript-eslint";
 import svelte from "eslint-plugin-svelte";
+import globals from "globals";
 
 export default ts.config(
   js.configs.recommended,
@@ -10,6 +11,8 @@ export default ts.config(
     files: ["**/*.svelte", "**/*.svelte.ts"],
     languageOptions: {
       globals: {
+        ...globals.browser,
+        ...globals.es2025,
         $state: 'readonly',
         $derived: 'readonly',
         $effect: 'readonly',

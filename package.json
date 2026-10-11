@@ -1,7 +1,7 @@
 {
   "name": "@cecepazhar/caui",
-  "version": "1.1.0",
-  "description": "CAUI — CA Design System by Cecep Saeful Azhar Hidayat, ST. Unified Svelte 5 component suite, iconography & tokens for 17 CA apps.",
+  "version": "1.2.0",
+  "description": "CAUI \u2014 CA Design System by Cecep Saeful Azhar Hidayat, ST. Unified Svelte 5 component suite, iconography & tokens for 17 CA apps.",
   "author": "Cecep Saeful Azhar Hidayat, ST <hi@cecepazhar.com> (https://www.cecepazhar.com)",
   "homepage": "https://www.cecepazhar.com",
   "repository": {
