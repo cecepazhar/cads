@@ -20,8 +20,7 @@
 
   const allVariants = ['primary', 'secondary', 'outline', 'ghost', 'brand', 'neutral', 'info', 'success', 'warning', 'danger'] as const;
   const allSizes = ['xs', 'sm', 'md', 'lg', 'xl', 'icon'] as const;
-  type AllVariant = typeof allVariants[number];
-  type AllSize = typeof allSizes[number];
+  // AllVariant/AllSize defined in types.ts
 
   const buttonVariants = ['primary', 'secondary', 'outline', 'ghost', 'brand', 'info', 'success', 'warning', 'danger'] as const;
   const badgeVariants = ['neutral', 'primary', 'secondary', 'outline', 'ghost', 'brand', 'info', 'success', 'warning', 'danger'] as const;

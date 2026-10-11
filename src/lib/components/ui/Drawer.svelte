@@ -20,8 +20,8 @@
     open = $bindable(false),
     position = 'right',
     title = '',
-    variant = 'primary',
-    size = 'md',
+    variant: _variant = 'primary',
+    size: _size = 'md',
     class: customClass = '',
     children,
   }: Props = $props();

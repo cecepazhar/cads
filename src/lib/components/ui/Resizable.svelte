@@ -29,17 +29,13 @@
 
   const separatorId = uid('resizable');
 
-  let split = $state(initialSplit);
   let isDragging = $state(false);
   let containerEl = $state<HTMLDivElement | null>(null);
 
   /* ── Clamp initial values ──────────────────────────────────── */
   const clampedMin = $derived(Math.max(0, minSize));
   const clampedMax = $derived(Math.min(100, maxSize));
-
-  $effect(() => {
-    split = Math.max(clampedMin, Math.min(clampedMax, initialSplit));
-  });
+  let split = $state(Math.max(clampedMin, Math.min(clampedMax, initialSplit)));
 
   /* ── Pointer events (mouse + touch via PointerEvent) ──────── */
   function handlePointerDown(e: PointerEvent) {

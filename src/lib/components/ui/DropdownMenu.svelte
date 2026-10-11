@@ -30,8 +30,8 @@
     items = [],
     trigger,
     align = 'left',
-    variant = 'primary',
-    size = 'md',
+    variant: _variant = 'primary',
+    size: _size = 'md',
     class: customClass = '',
     children,
   }: Props = $props();
@@ -141,7 +141,7 @@
       onkeydown={handleMenuKeydown}
     >
       <div class="py-1">
-        {#each items as item, idx}
+        {#each items as item, idx (item.label)}
           <button
             type="button"
             role="menuitem"

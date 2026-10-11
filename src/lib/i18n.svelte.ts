@@ -4,12 +4,15 @@ import id from './i18n/id.json';
 
 export type Locale = 'en' | 'id';
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+type TranslationKey = keyof typeof en;
+
 class I18nState {
   currentLocale = $state<Locale>('en');
 }
 
 const state = new I18nState();
-const translations: Record<Locale, any> = { en, id };
+const translations: Record<Locale, unknown> = { en, id };
 
 export function setLocale(locale: Locale) {
   state.currentLocale = locale;
@@ -24,10 +27,10 @@ export function getLocale(): Locale {
 
 export function t(path: string, fallback?: string): string {
   const keys = path.split('.');
-  let val: any = translations[state.currentLocale];
+  let val: unknown = translations[state.currentLocale];
   for (const k of keys) {
-    if (val && typeof val === 'object' && k in val) {
-      val = val[k];
+    if (val && typeof val === 'object' && k in (val as Record<string, unknown>)) {
+      val = (val as Record<string, unknown>)[k];
     } else {
       return fallback || path;
     }

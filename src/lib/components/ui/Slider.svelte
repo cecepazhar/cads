@@ -25,7 +25,7 @@
     max = 100,
     step = 1,
     disabled = false,
-    variant = 'primary',
+    variant: _variant = 'primary',
     size = 'md',
     label,
     ariaLabel,

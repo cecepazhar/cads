@@ -19,7 +19,7 @@
   }
 
   let {
-    variant = 'primary',
+    variant: _variant = 'primary',
     size = 'md',
     checked = $bindable(false),
     disabled = false,

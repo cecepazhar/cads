@@ -45,8 +45,7 @@
   const isGradientMode = $derived(mode === 'rgb-cycle' || mode === 'aurora');
 
   // CSS custom properties for gradient keyframes (avoids hex literals)
-  const glowFromVar = $derived(color);
-  const glowToVar = $derived(secondaryColor);
+  // glow colors used in template via direct prop binding
 
   // Effective bicolor state
   const effectiveBicolor = $derived(bicolor && mode === 'accent');

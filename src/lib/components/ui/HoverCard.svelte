@@ -17,8 +17,8 @@
 
   let {
     open = $bindable(false),
-    variant = 'primary',
-    size = 'md',
+    variant: _variant = 'primary',
+    size: _size = 'md',
     class: customClass = '',
     trigger,
     children,

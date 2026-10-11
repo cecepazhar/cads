@@ -1,7 +1,7 @@
 <script lang="ts">
   import type { Snippet } from 'svelte';
   import Logo from '$lib/components/Logo.svelte';
-  import { Button, Badge, ThemeSwitcher, LanguageSwitcher } from '$lib/components/ui';
+  import { ThemeSwitcher, LanguageSwitcher } from '$lib/components/ui';
 
   interface Props {
     children?: Snippet;
@@ -96,11 +96,11 @@
     <!-- Sidebar -->
     <aside class="w-64 shrink-0 border-r border-[#272732] p-6 hidden lg:block overflow-y-auto max-h-[calc(100vh-57px)] sticky top-[57px]">
       <div class="space-y-6">
-        {#each navCategories as cat}
+        {#each navCategories as cat (cat.title)}
           <div>
             <h4 class="text-[11px] font-mono uppercase tracking-wider text-neutral-500 font-semibold mb-2">{cat.title}</h4>
             <ul class="space-y-1">
-              {#each cat.items as item}
+              {#each cat.items as item (item.href)}
                 <li>
                   <a
                     href={item.href}

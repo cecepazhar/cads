@@ -125,7 +125,7 @@
       <caption class="sr-only">{caption ?? 'Data table'}</caption>
       <thead class="bg-neutral-50 dark:bg-[var(--ca-surface-elevated)] border-b border-neutral-200 dark:border-[var(--ca-border)] text-neutral-600 dark:text-neutral-400 font-semibold uppercase tracking-wider text-[11px] select-none">
         <tr>
-          {#each columns as col}
+          {#each columns as col (col.key)}
             <th
               class="{cellPadding[effectiveSize]} transition-colors {col.align === 'center' ? 'text-center' : col.align === 'right' ? 'text-right' : 'text-left'}"
               style={col.width ? `width: ${col.width}` : ''}
@@ -179,7 +179,7 @@
                 }
               }}
             >
-              {#each columns as col}
+              {#each columns as col (col.key)}
                 <td class="{cellPadding[effectiveSize]} {col.align === 'center' ? 'text-center' : col.align === 'right' ? 'text-right' : 'text-left'}">
                   {#if cell}
                     {@render cell({ item: row, column: col, value: getCellValue(row, col.key) })}

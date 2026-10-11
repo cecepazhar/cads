@@ -49,11 +49,11 @@
     expanded[id] = !expanded[id];
   }
 
-  function findNodeById(nodeList: TreeNode[], id: string): TreeNode | undefined {
+  function _findNodeById(nodeList: TreeNode[], id: string): TreeNode | undefined {
     for (const node of nodeList) {
       if (node.id === id) return node;
       if (node.children) {
-        const found = findNodeById(node.children, id);
+        const found = _findNodeById(node.children, id);
         if (found) return found;
       }
     }

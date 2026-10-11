@@ -1,6 +1,6 @@
 <script lang="ts">
   import type { ComponentVariant, ComponentSize } from './types';
-  import { uid } from '../../utils/a11y';
+  import { uid as _uid } from '../../utils/a11y';
   import { Check } from 'lucide-svelte';
 
   export type StepperVariant = Extract<ComponentVariant, 'primary' | 'ghost'>;

@@ -21,6 +21,7 @@
 
   let {
     options = [],
+    // eslint-disable-next-line no-unused-vars, no-useless-assignment
     value = $bindable(''),
     placeholder = 'Search...',
     variant = 'primary',

@@ -189,7 +189,7 @@
     'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--ca-brand)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--ca-surface)]';
 </script>
 
-<!-- svelte-ignore a11y_no_static_element_interactions -->
+
 <div
   bind:this={containerEl}
   id={carouselId}

@@ -55,6 +55,7 @@
 
   let open = $state(false);
   let triggerEl = $state<HTMLDivElement | null>(null);
+  // eslint-disable-next-line svelte/prefer-svelte-reactivity
   let calendarMonth = $state(start ? parseDateToMonth(start) : new Date());
   let hoverDate = $state('');
   let selectingEnd = $state(false);
@@ -196,12 +197,14 @@
   }
 
   function prevMonth() {
+    // eslint-disable-next-line svelte/prefer-svelte-reactivity
     const d = new Date(calendarMonth);
     d.setMonth(d.getMonth() - 1);
     calendarMonth = d;
   }
 
   function nextMonth() {
+    // eslint-disable-next-line svelte/prefer-svelte-reactivity
     const d = new Date(calendarMonth);
     d.setMonth(d.getMonth() + 1);
     calendarMonth = d;
@@ -444,9 +447,9 @@
             </tr>
           </thead>
           <tbody>
-            {#each weeks as week}
+            {#each weeks as week (week[0]?.toISOString() ?? 'week')}
               <tr>
-                {#each week as date}
+                {#each week as date (date.toISOString())}
                   {@const inMonth = date.getMonth() === calendarMonth.getMonth()}
                   {@const dateDisabled = isDateDisabled(date)}
                   {@const rangeStart = isRangeStart(date)}

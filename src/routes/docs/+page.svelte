@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { Button, Badge, Card, Kbd } from '$lib/components/ui';
+  import { Badge, Card } from '$lib/components/ui';
 
   let copied = $state(false);
 

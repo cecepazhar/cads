@@ -43,7 +43,7 @@
   const inputId = $derived(id ?? uid('number-input'));
   const errorId = $derived(`${inputId}-error`);
 
-  const clampedValue = $derived(() => {
+  const _clampedValue = $derived(() => {
     let v = value;
     if (min !== undefined) v = Math.max(min, v);
     if (max !== undefined) v = Math.min(max, v);

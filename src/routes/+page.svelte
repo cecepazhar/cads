@@ -4,22 +4,17 @@
   import {
     Button,
     Badge,
-    Card,
-    Input,
     Switch,
     PinInput,
     Slider,
     Avatar,
     AvatarGroup,
     SegmentedControl,
-    Tooltip,
-    Kbd,
     ThemeSwitcher,
     LanguageSwitcher,
   } from '$lib/components/ui';
 
   // Interactive Live Playground State
-  let activeTab = $state('button');
   let brandColor = $state('#06b6d4');
   let switchState = $state(true);
   let sliderVal = $state(68);
@@ -168,7 +163,7 @@
         <!-- Brand Accent Picker -->
         <div class="flex items-center gap-2">
           <span class="text-xs text-neutral-400 font-mono">Theme:</span>
-          {#each brandPresets as b}
+          {#each brandPresets as b (b.hex)}
             <button
               type="button"
               onclick={() => setBrand(b.hex)}
@@ -239,7 +234,7 @@
       </div>
 
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-        {#each apps as app}
+        {#each apps as app (app.name)}
           <div class="rounded-xl border border-neutral-800 bg-[#121217] p-5 space-y-2 hover:border-neutral-700 transition">
             <div class="flex items-center justify-between">
               <h3 class="text-sm font-bold text-white">{app.name}</h3>

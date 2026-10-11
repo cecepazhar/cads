@@ -12,7 +12,7 @@
 
   let { size = 'md', class: customClass = '' }: Props = $props();
 
-  const typeVariantMap: Record<string, Extract<ComponentVariant, 'info' | 'success' | 'warning' | 'danger'>> = {
+  const _typeVariantMap: Record<string, Extract<ComponentVariant, 'info' | 'success' | 'warning' | 'danger'>> = {
     info: 'info',
     success: 'success',
     warning: 'warning',

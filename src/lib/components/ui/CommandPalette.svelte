@@ -24,8 +24,8 @@
   let {
     open = $bindable(false),
     items = [],
-    variant = 'primary',
-    size = 'md',
+    variant: _variant = 'primary',
+    size: _size = 'md',
   }: Props = $props();
 
   let query = $state('');

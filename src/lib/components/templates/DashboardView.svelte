@@ -1,4 +1,5 @@
 <script lang="ts">
+  // eslint-disable-next-line no-unused-vars
   import Card from '$lib/components/ui/Card.svelte';
   import Button from '$lib/components/ui/Button.svelte';
   import Badge from '$lib/components/ui/Badge.svelte';
@@ -71,7 +72,7 @@
 
   <!-- Metric Telemetry Cards Grid -->
   <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-    {#each metrics as m}
+    {#each metrics as m (m.label)}
       <div class="p-4 rounded-xl bg-[#121217] border border-[#272732] flex items-center justify-between shadow-xs">
         <div class="space-y-1">
           <span class="text-[11px] font-medium text-neutral-400 uppercase tracking-wider">{m.label}</span>

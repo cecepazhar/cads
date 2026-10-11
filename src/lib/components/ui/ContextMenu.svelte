@@ -32,8 +32,8 @@
     open = $bindable(false),
     x = $bindable(0),
     y = $bindable(0),
-    variant = 'primary',
-    size = 'md',
+    variant: _variant = 'primary',
+    size: _size = 'md',
     class: customClass = '',
     children,
   }: Props = $props();
@@ -115,7 +115,7 @@
     use:clickOutside={close}
   >
     <div class="py-0.5">
-      {#each items as item, idx}
+      {#each items as item, idx (item.label)}
         <button
           type="button"
           role="menuitem"

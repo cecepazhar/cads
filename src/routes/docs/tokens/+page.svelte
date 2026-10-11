@@ -24,7 +24,7 @@
 
   <Card title="Color Palette Tokens" description="Matrix warna dark mode dan token brand aplikasi.">
     <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-2">
-      {#each colorTokens as col}
+      {#each colorTokens as col (col.var)}
         <div class="rounded-lg border border-neutral-800 bg-neutral-900/60 p-3 flex flex-col gap-2">
           <div class="h-10 w-full rounded border border-white/10" style="background-color: {col.val};"></div>
           <div>

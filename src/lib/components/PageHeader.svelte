@@ -57,7 +57,7 @@
   <div class="flex items-center gap-3 min-w-0">
     <div class="w-10 h-10 rounded-xl border flex items-center justify-center shrink-0 {accentClass}">
       <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        {#each paths as d}
+        {#each paths as d (d)}
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" {d} />
         {/each}
       </svg>

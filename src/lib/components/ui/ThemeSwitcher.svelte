@@ -17,7 +17,7 @@
   let {
     showAccentPicker = true,
     variant = 'primary',
-    size = 'md',
+    size: _size = 'md',
     class: customClass = '',
   }: Props = $props();
 

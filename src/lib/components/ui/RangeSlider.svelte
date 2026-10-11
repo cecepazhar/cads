@@ -23,7 +23,7 @@
     minVal = $bindable(20),
     maxVal = $bindable(80),
     disabled = false,
-    variant = 'primary',
+    variant: _variant = 'primary',
     size = 'md',
     class: customClass = '',
   }: Props = $props();

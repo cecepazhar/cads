@@ -25,7 +25,7 @@
   }
 
   let {
-    variant = 'primary',
+    variant: _variant = 'primary',
     size = 'md',
     options = [],
     value = $bindable(''),
@@ -53,7 +53,7 @@
   {#if label}
     <span id={labelId} class="text-xs font-medium text-[var(--ca-text-secondary)] mb-1">{label}</span>
   {/if}
-  {#each options as opt}
+  {#each options as opt (opt.value)}
     <label class="inline-flex items-start gap-2.5 cursor-pointer select-none {opt.disabled ? 'opacity-40 cursor-not-allowed' : ''}">
       <input
         type="radio"

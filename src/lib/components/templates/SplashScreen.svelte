@@ -1,6 +1,5 @@
 <script lang="ts">
   import { onMount } from 'svelte';
-  import Icon from '$lib/components/ui/Icon.svelte';
 
   interface Props {
     appName?: string;

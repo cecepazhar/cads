@@ -52,6 +52,7 @@
   const minDate = $derived(min ? parseDate(min) : null);
   const maxDate = $derived(max ? parseDate(max) : null);
 
+  // eslint-disable-next-line svelte/prefer-svelte-reactivity
   let focusedDate = $state(value ? parseDate(value) : new Date());
 
   $effect(() => {
@@ -144,6 +145,7 @@
   }
 
   function prevMonth() {
+    // eslint-disable-next-line svelte/prefer-svelte-reactivity
     const d = new Date(month);
     d.setMonth(d.getMonth() - 1);
     month = d;

@@ -26,7 +26,7 @@
     open = $bindable(false),
     title = '',
     description = '',
-    variant = 'primary',
+    variant: _variant = 'primary',
     size = 'md',
     closeOnEsc = true,
     closeOnBackdrop = true,

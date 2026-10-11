@@ -56,7 +56,7 @@
     return `${(bytes / Math.pow(1024, i)).toFixed(i > 0 ? 1 : 0)} ${units[i]}`;
   }
 
-  const uploadingFiles = $derived(internalFiles.filter((f) => f.status === 'uploading'));
+  const _uploadingFiles = $derived(internalFiles.filter((f) => f.status === 'uploading'));
 
   function validateFile(file: File): string | null {
     if (maxSize && file.size > maxSize) {

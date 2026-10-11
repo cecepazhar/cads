@@ -1,6 +1,7 @@
 <script lang="ts">
   import Button from '$lib/components/ui/Button.svelte';
   import Badge from '$lib/components/ui/Badge.svelte';
+  // eslint-disable-next-line no-unused-vars
   import Icon from '$lib/components/ui/Icon.svelte';
 
   export interface ChatMessage {
@@ -166,7 +167,7 @@ sudo nginx -t && sudo systemctl reload nginx`,
           <!-- Action suggestions chips -->
           {#if msg.suggestedActions && msg.suggestedActions.length > 0}
             <div class="mt-3 pt-2 border-t border-[#272732]/60 flex flex-wrap gap-1.5">
-              {#each msg.suggestedActions as act}
+              {#each msg.suggestedActions as act (act)}
                 <button
                   type="button"
                   onclick={() => handleActionClick(act)}
