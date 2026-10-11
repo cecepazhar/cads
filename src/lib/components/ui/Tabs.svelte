@@ -1,6 +1,6 @@
 <script lang="ts">
   import type { Snippet } from 'svelte';
-  import type { ComponentSize } from '../ui/types';
+  import type { ComponentSize } from './types';
 
   type TabsVariant = 'underline' | 'pills' | 'segmented';
   type TabsSize = Extract<ComponentSize, 'sm' | 'md' | 'lg'>;

@@ -1,5 +1,9 @@
 <script lang="ts">
   import type { Snippet } from 'svelte';
+  import type { ComponentVariant, ComponentSize } from './types';
+
+  type SidebarItemVariant = Extract<ComponentVariant, 'primary' | 'ghost' | 'outline'>;
+  type SidebarItemSize = Extract<ComponentSize, 'sm' | 'md'>;
 
   interface Props {
     active?: boolean;
@@ -11,6 +15,8 @@
     collapsed?: boolean;
     href?: string;
     onclick?: (e: MouseEvent) => void;
+    variant?: SidebarItemVariant;
+    size?: SidebarItemSize;
     class?: string;
   }
 
@@ -24,6 +30,8 @@
     collapsed = false,
     href,
     onclick,
+    variant = 'primary',
+    size = 'md',
     class: customClass = '',
   }: Props = $props();
 
@@ -41,6 +49,23 @@
     offline: 'bg-neutral-500',
     warning: 'bg-amber-500 ring-2 ring-amber-500/20',
   };
+
+  const activeVariantClasses: Record<SidebarItemVariant, string> = {
+    primary: 'bg-neutral-100 dark:bg-[var(--ca-surface-subtle)] text-neutral-950 dark:text-white font-semibold',
+    ghost: 'bg-neutral-100/50 dark:bg-[var(--ca-surface-subtle)]/50 text-neutral-950 dark:text-white font-semibold',
+    outline: 'bg-neutral-100 dark:bg-[var(--ca-surface-subtle)] text-neutral-950 dark:text-white font-semibold border border-neutral-300 dark:border-[var(--ca-border)]',
+  };
+
+  const inactiveVariantClasses: Record<SidebarItemVariant, string> = {
+    primary: 'text-neutral-600 dark:text-neutral-400 hover:bg-neutral-50 dark:hover:bg-[var(--ca-surface-elevated)] hover:text-neutral-900 dark:hover:text-neutral-200',
+    ghost: 'text-neutral-600 dark:text-neutral-400 hover:bg-neutral-50/50 dark:hover:bg-[var(--ca-surface-elevated)]/50 hover:text-neutral-900 dark:hover:text-neutral-200',
+    outline: 'text-neutral-600 dark:text-neutral-400 hover:bg-neutral-50 dark:hover:bg-[var(--ca-surface-elevated)] hover:text-neutral-900 dark:hover:text-neutral-200',
+  };
+
+  const sizeClasses: Record<SidebarItemSize, string> = {
+    sm: 'text-[11px] px-2.5 py-1.5',
+    md: 'text-xs px-3 py-2',
+  };
 </script>
 
 <svelte:element
@@ -49,9 +74,9 @@
   type={href ? undefined : 'button'}
   {onclick}
   title={collapsed ? label : undefined}
-  class="w-full flex items-center gap-3 px-3 py-2 rounded-lg text-xs font-medium transition-all group relative cursor-pointer {active ? 'bg-neutral-100 dark:bg-[#181822] text-neutral-950 dark:text-white font-semibold' : 'text-neutral-600 dark:text-neutral-400 hover:bg-neutral-50 dark:hover:bg-[#14141A] hover:text-neutral-900 dark:hover:text-neutral-200'} {collapsed ? 'justify-center px-0 py-2.5' : ''} {customClass}"
+  aria-current={active && href ? 'page' : undefined}
+  class="w-full flex items-center gap-3 rounded-lg font-medium transition-all group relative cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--ca-brand)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--ca-surface)] {active ? activeVariantClasses[variant] : inactiveVariantClasses[variant]} {collapsed ? 'justify-center px-0 py-2.5' : sizeClasses[size]} {customClass}"
 >
-  <!-- Active Indicator Bar -->
   {#if active}
     <span class="absolute left-0 top-1/2 -translate-y-1/2 w-1 h-4.5 bg-[var(--ca-brand)] rounded-r"></span>
   {/if}

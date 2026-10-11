@@ -1,5 +1,5 @@
 <script lang="ts">
-  import type { ComponentVariant, ComponentSize } from '../ui/types';
+  import type { ComponentVariant, ComponentSize } from './types';
 
   type PinVariant = Extract<ComponentVariant, 'primary' | 'outline' | 'ghost'>;
   type PinSize = Extract<ComponentSize, 'sm' | 'md' | 'lg'>;

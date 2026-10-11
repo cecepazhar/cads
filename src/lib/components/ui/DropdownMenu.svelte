@@ -1,5 +1,7 @@
 <script lang="ts">
   import type { Snippet } from 'svelte';
+  import type { ComponentVariant, ComponentSize } from './types';
+  import { clickOutside, uid } from '../../utils/a11y';
 
   export interface DropdownItem {
     id?: string;
@@ -11,10 +13,15 @@
     action?: () => void;
   }
 
+  type DropdownVariant = Extract<ComponentVariant, 'primary' | 'outline'>;
+  type DropdownSize = Extract<ComponentSize, 'sm' | 'md' | 'lg'>;
+
   interface Props {
     items: DropdownItem[];
     trigger?: Snippet;
     align?: 'left' | 'right';
+    variant?: DropdownVariant;
+    size?: DropdownSize;
     class?: string;
     children?: Snippet;
   }
@@ -23,52 +30,133 @@
     items = [],
     trigger,
     align = 'left',
+    variant = 'primary',
+    size = 'md',
     class: customClass = '',
     children,
   }: Props = $props();
 
   let open = $state(false);
+  let activeIndex = $state(0);
+  let triggerRef = $state<HTMLButtonElement | null>(null);
 
-  function handleClickOutside(event: MouseEvent) {
-    const target = event.target as HTMLElement;
-    if (!target.closest('.caui-dropdown-container')) {
-      open = false;
+  const menuId = uid('dropdown-menu');
+
+  function toggle() {
+    open = !open;
+    if (open) {
+      const first = items.findIndex((i) => !i.disabled);
+      activeIndex = first >= 0 ? first : 0;
+    }
+  }
+
+  function close() {
+    open = false;
+    triggerRef?.focus();
+  }
+
+  function handleMenuKeydown(e: KeyboardEvent) {
+    const enabled = items
+      .map((item, i) => ({ item, i }))
+      .filter(({ item }) => !item.disabled);
+    if (enabled.length === 0) return;
+
+    const currentIdx = enabled.findIndex(({ i }) => i === activeIndex);
+
+    switch (e.key) {
+      case 'ArrowDown':
+        e.preventDefault();
+        activeIndex = currentIdx < enabled.length - 1
+          ? enabled[currentIdx + 1].i
+          : enabled[0].i;
+        break;
+      case 'ArrowUp':
+        e.preventDefault();
+        activeIndex = currentIdx > 0
+          ? enabled[currentIdx - 1].i
+          : enabled[enabled.length - 1].i;
+        break;
+      case 'Home':
+        e.preventDefault();
+        activeIndex = enabled[0].i;
+        break;
+      case 'End':
+        e.preventDefault();
+        activeIndex = enabled[enabled.length - 1].i;
+        break;
+      case 'Enter':
+      case ' ':
+        e.preventDefault();
+        items[activeIndex]?.action?.();
+        close();
+        break;
+      case 'Escape':
+        e.preventDefault();
+        close();
+        break;
+    }
+  }
+
+  function handleTriggerKeydown(e: KeyboardEvent) {
+    if (e.key === 'ArrowDown' || e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();
+      if (!open) {
+        toggle();
+      }
     }
   }
 
   $effect(() => {
     if (open) {
-      window.addEventListener('click', handleClickOutside);
-      return () => window.removeEventListener('click', handleClickOutside);
+      const container = document.getElementById(menuId);
+      const active = container?.querySelector<HTMLElement>(`[data-index="${activeIndex}"]`);
+      active?.focus();
     }
   });
 </script>
 
-<div class="caui-dropdown-container relative inline-block text-left {customClass}">
-  <div onclick={() => (open = !open)} role="button" tabindex="0" onkeydown={(e) => e.key === 'Enter' && (open = !open)}>
+<div class="relative inline-block text-left {customClass}" use:clickOutside={close}>
+  <button
+    type="button"
+    bind:this={triggerRef}
+    aria-haspopup="menu"
+    aria-expanded={open}
+    aria-controls={open ? menuId : undefined}
+    onclick={toggle}
+    onkeydown={handleTriggerKeydown}
+    class="inline-flex focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--ca-brand)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--ca-surface)]"
+  >
     {#if trigger}
       {@render trigger()}
     {:else if children}
       {@render children()}
     {/if}
-  </div>
+  </button>
 
   {#if open}
     <div
-      class="absolute z-50 mt-1 min-w-[180px] rounded-lg bg-neutral-900 border border-neutral-800 p-1 shadow-2xl backdrop-blur-md focus:outline-none {align === 'right' ? 'right-0' : 'left-0'}"
+      id={menuId}
+      role="menu"
+      class="absolute z-50 mt-1 min-w-[180px] rounded-lg bg-neutral-900 border border-neutral-800 p-1 shadow-2xl backdrop-blur-md {align === 'right' ? 'right-0' : 'left-0'}"
+      onkeydown={handleMenuKeydown}
     >
       <div class="py-1">
-        {#each items as item}
+        {#each items as item, idx}
           <button
             type="button"
+            role="menuitem"
+            data-index={idx}
+            tabindex={idx === activeIndex ? 0 : -1}
             disabled={item.disabled}
+            aria-disabled={item.disabled ? true : undefined}
             onclick={() => {
               if (!item.disabled) {
                 item.action?.();
-                open = false;
+                close();
               }
             }}
-            class="group flex w-full items-center justify-between gap-3 rounded-md px-2.5 py-1.5 text-xs text-left transition-colors cursor-pointer disabled:opacity-40 disabled:cursor-not-allowed {item.danger ? 'text-rose-400 hover:bg-rose-500/10' : 'text-neutral-300 hover:bg-neutral-800 hover:text-white'}"
+            onmouseenter={() => { if (!item.disabled) activeIndex = idx; }}
+            class="group flex w-full items-center justify-between gap-3 rounded-md px-2.5 py-1.5 text-xs text-left transition-colors cursor-pointer disabled:opacity-40 disabled:cursor-not-allowed {item.danger ? 'text-rose-400 hover:bg-rose-500/10' : 'text-neutral-300 hover:bg-neutral-800 hover:text-white'} focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--ca-brand)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--ca-surface)]"
           >
             <span class="flex items-center gap-2">
               {#if item.icon}

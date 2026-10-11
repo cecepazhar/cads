@@ -1,5 +1,5 @@
 <script lang="ts">
-  import type { ComponentVariant } from '../ui/types';
+  import type { ComponentVariant } from './types';
 
   type CircularProgressVariant = Extract<ComponentVariant, 'primary' | 'secondary' | 'outline' | 'ghost' | 'brand' | 'neutral' | 'info' | 'success' | 'warning' | 'danger'>;
 

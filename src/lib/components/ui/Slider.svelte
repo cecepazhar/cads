@@ -1,5 +1,5 @@
 <script lang="ts">
-  import type { ComponentVariant, ComponentSize } from '../ui/types';
+  import type { ComponentVariant, ComponentSize } from './types';
 
   type SliderVariant = Extract<ComponentVariant, 'primary' | 'brand'>;
   type SliderSize = Extract<ComponentSize, 'sm' | 'md' | 'lg'>;

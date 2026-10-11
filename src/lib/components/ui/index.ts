@@ -48,3 +48,15 @@ export { default as Combobox } from './Combobox.svelte';
 export { default as TreeView } from './TreeView.svelte';
 export { default as Separator } from './Separator.svelte';
 export { default as ColorPicker } from './ColorPicker.svelte';
+
+// Phase 5 — New Components
+export { default as Calendar } from './Calendar.svelte';
+export { default as Carousel } from './Carousel.svelte';
+export { default as DatePicker } from './DatePicker.svelte';
+export { default as DateRangePicker } from './DateRangePicker.svelte';
+export { default as DateTimePicker } from './DateTimePicker.svelte';
+export { default as FileUpload } from './FileUpload.svelte';
+export { default as MentionInput } from './MentionInput.svelte';
+export { default as NumberInput } from './NumberInput.svelte';
+export { default as Resizable } from './Resizable.svelte';
+export { default as Stepper } from './Stepper.svelte';

@@ -1,5 +1,5 @@
 <script lang="ts">
-  import type { ComponentVariant, ComponentSize } from '../ui/types';
+  import type { ComponentVariant, ComponentSize } from './types';
 
   type ProgressVariant = Extract<ComponentVariant, 'primary' | 'secondary' | 'outline' | 'ghost' | 'brand' | 'neutral' | 'info' | 'success' | 'warning' | 'danger'>;
   type ProgressSize = Extract<ComponentSize, 'sm' | 'md' | 'lg'>;

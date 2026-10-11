@@ -1,5 +1,5 @@
 <script lang="ts">
-  import type { ComponentVariant, ComponentSize } from '../ui/types';
+  import type { ComponentVariant, ComponentSize } from './types';
 
   type SegmentedVariant = Extract<ComponentVariant, 'primary' | 'outline' | 'ghost'>;
   type SegmentedSize = Extract<ComponentSize, 'sm' | 'md' | 'lg'>;

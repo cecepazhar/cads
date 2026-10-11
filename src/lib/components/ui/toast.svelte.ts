@@ -6,18 +6,48 @@ export interface ToastMessage {
   duration?: number;
 }
 
+interface PendingTimeout {
+  timeoutId: ReturnType<typeof setTimeout>;
+  remaining: number;
+  startedAt: number;
+}
+
 class ToastStore {
   toasts = $state<ToastMessage[]>([]);
+  private pending = new Map<string, PendingTimeout>();
 
-  show(toast: Omit<ToastMessage, 'id'>) {
+  show(data: Omit<ToastMessage, 'id'>) {
     const id = Math.random().toString(36).substring(2, 9);
-    const item: ToastMessage = { ...toast, id };
+    const item: ToastMessage = { ...data, id };
     this.toasts = [...this.toasts, item];
 
-    const dur = toast.duration ?? 4000;
+    const dur = data.duration ?? 4000;
     if (dur > 0) {
-      setTimeout(() => this.remove(id), dur);
+      this.startTimer(id, dur);
     }
+  }
+
+  private startTimer(id: string, duration: number) {
+    const timeoutId = setTimeout(() => {
+      this.pending.delete(id);
+      this.remove(id);
+    }, duration);
+    this.pending.set(id, { timeoutId, remaining: duration, startedAt: Date.now() });
+  }
+
+  pause(id: string) {
+    const p = this.pending.get(id);
+    if (!p) return;
+    clearTimeout(p.timeoutId);
+    p.remaining -= Date.now() - p.startedAt;
+  }
+
+  resume(id: string) {
+    const p = this.pending.get(id);
+    if (!p || p.remaining <= 0) return;
+    const remaining = p.remaining;
+    this.pending.delete(id);
+    this.startTimer(id, remaining);
   }
 
   success(title: string, description?: string) {
@@ -38,6 +68,11 @@ class ToastStore {
 
   remove(id: string) {
     this.toasts = this.toasts.filter((t) => t.id !== id);
+    const p = this.pending.get(id);
+    if (p) {
+      clearTimeout(p.timeoutId);
+      this.pending.delete(id);
+    }
   }
 }
 

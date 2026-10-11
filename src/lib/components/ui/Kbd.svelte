@@ -20,6 +20,7 @@
 </script>
 
 <kbd
+  aria-hidden="true"
   class="inline-flex items-center justify-center font-mono font-semibold rounded border border-[var(--ca-border)] bg-[var(--ca-surface-elevated)] text-[var(--ca-text-secondary)] shadow-xs select-none {sizeClasses[size]} {customClass}"
 >
   {@render children?.()}

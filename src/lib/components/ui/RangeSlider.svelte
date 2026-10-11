@@ -1,5 +1,5 @@
 <script lang="ts">
-  import type { ComponentVariant, ComponentSize } from '../ui/types';
+  import type { ComponentVariant, ComponentSize } from './types';
 
   type RangeVariant = Extract<ComponentVariant, 'primary' | 'brand'>;
   type RangeSize = Extract<ComponentSize, 'sm' | 'md' | 'lg'>;

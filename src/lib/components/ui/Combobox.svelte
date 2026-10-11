@@ -1,5 +1,5 @@
 <script lang="ts">
-  import type { ComponentVariant, ComponentSize } from '../ui/types';
+  import type { ComponentVariant, ComponentSize } from './types';
   import { uid } from '../../utils/a11y';
 
   type ComboboxVariant = Extract<ComponentVariant, 'primary' | 'outline' | 'ghost'>;
